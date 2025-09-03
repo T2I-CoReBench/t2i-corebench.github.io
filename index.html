@@ -116,14 +116,14 @@
                     </span>
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
                       <span>Supplementary</span>
-                    </a>
+                    </a> -->
                   </span>
 
                   <!-- Github link -->
@@ -138,13 +138,13 @@
                 </span>
 
                 <!-- ArXiv abstract Link -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv</span> -->
                 </a>
               </span>
             </div>
@@ -160,14 +160,16 @@
   <div class="container is-max-desktop">
     <div class="hero-body"></div>
       <img src="static/images/fig_statistics.jpeg" alt="Teaser Image" style="max-width:100%; height:auto; display:block; margin:0 auto;">
-      <div class="content" style="text-align:justify; margin-top:1em;"></div>
+      <div class="content" style="text-align:justify; margin-top:1em;">
         <strong>Statistics of <span style="font-variant:small-caps;">T2I-CoReBench</span>.</strong>
-        <span style="font-style:italic;">Left:</span> Our T2I evaluation taxonomy spanning two fundamental generative capabilities (<span style="font-style:italic;">composition</span> and <span style="font-style:italic;">reasoning</span>), further refined into 12 dimensions.
-        <span style="font-style:italic;">Right:</span> Distributions of prompt-token lengths and checklist-question counts. Our benchmark demonstrates high complexity, with an average prompt length of <span style="font-weight:600;">170 tokens</span> and an average of <span style="font-weight:600;">12.5 questions</span>. 
+        <u>Left</u>: Our T2I evaluation taxonomy spanning two fundamental generative capabilities (<span style="font-style:italic;">composition</span> and <span style="font-style:italic;">reasoning</span>), further refined into 12 dimensions.
+        <u>Right</u>: Distributions of prompt-token lengths and checklist-question counts. Our benchmark demonstrates high complexity, with an average prompt length of <span style="font-weight:600;">170 tokens</span> and an average of <span style="font-weight:600;">12.5 questions</span>. 
       </div>
     </div>
   </div>
 </section>
+<br>
+<br>
 <!-- End teaser image -->
 
 <!-- Paper abstract -->
@@ -188,38 +190,321 @@
 <!-- End paper abstract -->
 
 
+<!-- T2I-CoReBench – HTML Table -->
+<section class="section" style="text-align:center;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Benchmark Comparison</h2>
+    <figure style="margin:1.25rem 0; display:inline-block; text-align:center;">
+
+    <style>
+      .corebench-table{border-collapse:collapse;width:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:14px}
+      .corebench-table th,.corebench-table td{border:1px solid #ddd;padding:.5rem;text-align:center;vertical-align:middle}
+      .corebench-table thead th{background:#f7f7f8;font-weight:700}
+      .corebench-table tbody th{font-weight:600;text-align:center;white-space:nowrap}
+      .sym{font-size:16px;line-height:1}
+      .sym.full{color:#111}   /* ● */
+      .sym.half{color:#111}   /* ◑ */
+      .sym.empty{color:#555}  /* ○ */
+      .subtle{color:#666;font-size:12px;margin:.5rem 0 0}
+    </style>
+
+    <table class="corebench-table" aria-describedby="legend" style="margin:auto;">
+      <thead>
+        <tr>
+          <th rowspan="3">Benchmarks</th>
+          <th colspan="4"><em>Composition</em></th>
+          <th colspan="8"><em>Reasoning</em></th>
+        </tr>
+        <tr>
+          <th colspan="4"></th>
+          <th colspan="4"><em>Deductive</em></th>
+          <th colspan="2"><em>Inductive</em></th>
+          <th colspan="2"><em>Abductive</em></th>
+        </tr>
+        <tr>
+          <th>MI</th><th>MA</th><th>MR</th><th>TR</th>
+          <th>LR</th><th>BR</th><th>HR</th><th>PR</th>
+          <th>GR</th><th>AR</th><th>CR</th><th>RR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2307.06350" target="_blank">T2I-CompBench</a></th>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2310.11513" target="_blank">GenEval</a></th>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2406.13743" target="_blank">GenAI-Bench</a></th>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2403.05135" target="_blank">DPG-Bench</a></th>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2408.14339" target="_blank">ConceptMix</a></th>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2506.02161" target="_blank">TIIF-Bench</a></th>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2505.24787" target="_blank">LongBench-T2I</a></th>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2406.07546" target="_blank">Commonsense-T2I</a></th>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2504.16074" target="_blank">PhyBench</a></th>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2503.07265" target="_blank">WISE</a></th>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://www.arxiv.org/abs/2508.17472" target="_blank">T2I-ReasonBench</a></th>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2505.23493" target="_blank">R2I-Bench</a></th>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td>
+          <td><span class="sym half">◑</span></td>
+        </tr>
+        <tr>
+          <th><a href="https://arxiv.org/abs/2506.07977" target="_blank">OneIG-Bench</a></th>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym empty">○</span></td><td><span class="sym empty">○</span></td>
+          <td><span class="sym half">◑</span></td><td><span class="sym empty">○</span></td>
+        </tr>
+        <tr>
+          <th><strong>T2I-CoReBench (Ours)</strong></th>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+          <td><span class="sym full">●</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p id="legend" class="subtle" style="text-align:justify; font-size:16px; line-height:1.6;">
+      <strong>Comparison between our <span style="font-variant:small-caps;">T2I-CoReBench</span> and existing T2I benchmarks.</strong> 
+      <span style="font-variant:small-caps;">T2I-CoReBench</span> comprehensively covers 12 evaluation dimensions spanning both 
+      <em>composition</em> and <em>reasoning</em> scenarios. 
+      Legend: <span class="sym full">●</span> high-complexity coverage (visual elements &gt; 5 or one-to-many/many-to-one inference), 
+      <span class="sym half">◑</span> simple coverage (visual elements ≤ 5 or one-to-one inference), 
+      <span class="sym empty">○</span> not covered.
+    </p>
+    </figure>
+  </div>
+</section>
+<!-- End HTML table -->
+
+
 <!-- Image carousel -->
-<section class="hero is-small">
+<section class="section is-small">
   <div class="hero-body">
-    <div class="container">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Examples of Each Dimension</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
+        <img src="static/images/1-C-MI.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+          Composition - Multi-Instance (MI)
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
+        <img src="static/images/2-C-MA.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+          Composition - Multi-Attribute (MA)
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
+        <img src="static/images/3-C-MR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Composition - Multi-Relation (MR)
        </h2>
      </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/4-C-TR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Composition - Text Rendering (TR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/5-R-LR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Logical Reasoning (LR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/6-R-BR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Behavioral Reasoning (BR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/7-R-HR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Hypothetical Reasoning (HR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/8-R-PR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Procedural Reasoning (PR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/9-R-GR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Generalization Reasoning (GR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/10-R-AR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Analogical Reasoning (AR)
+       </h2>
+     </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/11-R-CR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+         Reasoning - Commonsense Reasoning (CR)
+       </h2>
+     </div>
+        <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/12-R-RR.jpeg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+          Reasoning - Reconstructive Reasoning (RR)
+        </h2>
+      </div>
     </div>
   </div>
 </div>
@@ -231,66 +516,28 @@
 
 
 <!-- Youtube video -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
-    <div class="container">
+    <div class="container"> -->
       <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
+      <!-- <h2 class="title is-3">Video Presentation</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
-          <div class="publication-video">
+          <div class="publication-video"> -->
             <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End youtube video -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
 <!-- Paper poster -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title">Poster</h2>
@@ -300,7 +547,7 @@
         
       </div>
     </div>
-  </section>
+  </section> -->
 <!--End paper poster -->
 
 
