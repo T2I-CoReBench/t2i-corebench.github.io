@@ -106,7 +106,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="https://arxiv.org/abs/2509.03516" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -148,6 +148,15 @@
                 </a>
               </span>
             </div>
+
+            <div class="column has-text-left">
+              <div class="news-section">
+                <div class="content">
+                  <ul class="news-list">
+                    <li><strong>[2025-09-03]</strong> 🌟 We have released the paper, with data and code to follow in a few days after the company’s review.</li>                      
+                </ul>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -158,7 +167,7 @@
 <!-- Teaser image--></div>
 <section class="hero teaser">
   <div class="container is-max-desktop">
-    <div class="hero-body"></div>
+    <div class="hero-body" style="margin-top:-4em;"></div>
       <img src="static/images/fig_statistics.jpeg" alt="Teaser Image" style="max-width:100%; height:auto; display:block; margin:0 auto;">
       <div class="content" style="text-align:justify; margin-top:1em;">
         <strong>Statistics of <span style="font-variant:small-caps;">T2I-CoReBench</span>.</strong>
@@ -180,7 +189,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Text-to-image (T2I) generation aims to synthesize images from textual prompts, which jointly specify what must be shown and imply what can be inferred, thereby corresponding to two core capabilities: <b><i>composition</i></b> and <b><i>reasoning</i></b>. However, with the emerging advances of T2I models in reasoning beyond composition, existing benchmarks reveal clear limitations in providing comprehensive evaluations across and within these capabilities. Meanwhile, these advances also enable models to handle more complex prompts, whereas current benchmarks remain limited to low scene density and simplified one-to-one reasoning. To address these limitations, we propose <b><span style="font-variant:small-caps;">T2I-CoReBench</span></b>, a comprehensive and complex benchmark that evaluates both composition and reasoning capabilities of T2I models. To ensure comprehensiveness, we structure composition around scene graph elements (<i>instance</i>, <i>attribute</i>, and <i>relation</i>) and reasoning around the philosophical framework of inference (<i>deductive</i>, <i>inductive</i>, and <i>abductive</i>), formulating a 12-dimensional evaluation taxonomy. To increase complexity, driven by the inherent complexities of real-world scenarios, we curate each prompt with high compositional density for composition and multi-step inference for reasoning. We also pair each prompt with a checklist that specifies individual yes/no questions to assess each intended element independently to facilitate fine-grained and reliable evaluation. In statistics, our benchmark comprises 1,080 challenging prompts and around 13,500 checklist questions. Experiments across 27 current T2I models reveal that their composition capability still remains limited in complex high-density scenarios, while the reasoning capability lags even further behind as a critical bottleneck, with all models struggling to infer implicit elements from prompts.
           </p>
         </div>
       </div>
@@ -191,9 +200,9 @@
 
 
 <!-- T2I-CoReBench – HTML Table -->
-<section class="section" style="text-align:center;">
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Benchmark Comparison</h2>
+    <h2 class="title is-3 has-text-centered">1. Benchmark Comparison</h2>
     <figure style="margin:1.25rem 0; display:inline-block; text-align:center;">
 
     <style>
@@ -419,7 +428,7 @@
 <section class="section is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Examples of Each Dimension</h2>
+      <h2 class="title is-3 has-text-centered">2. Examples of Each Dimension</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- Your image here -->
@@ -513,49 +522,246 @@
 <!-- End image carousel -->
 
 
+<!-- Evaluation Results -->
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">3. Evaluation Results</h2>
+<div style="overflow-x:auto; margin:3em;">
+<table border="1" cellspacing="0" cellpadding="4" style="border-collapse:collapse; text-align:center; font-size:13px; width:100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.4;" id="benchmarkTable">
 
+  <thead style="background: #f8fafc;">
+    <tr>
+      <th rowspan="2" data-column="0" class="sortable" style="padding: 12px 10px; text-align: left; border-right: 1px solid #e2e8f0; font-weight: 700; color: #1e293b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; min-width: 140px; cursor: pointer; user-select: none; position: relative;">Models <span class="sort-indicator" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th colspan="5" style="padding: 12px 8px; border-right: 1px solid #e5e7eb; border-bottom: 2px solid #3b82f6; font-weight: 700; color: #1e293b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;"><i><b>Composition</b></i></th>
+      <th colspan="9" style="padding: 12px 8px; border-right: 1px solid #e5e7eb; border-bottom: 2px solid #8b5cf6; font-weight: 700; color: #1e293b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;"><i><b>Reasoning</b></i></th>
+      <th rowspan="2" data-column="15" class="sortable" style="padding: 12px 8px; background: #fef3c7; font-weight: 700; color: #1e293b; border-left: 1px solid #f59e0b; min-width: 70px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; user-select: none; position: relative;">Overall <span class="sort-indicator" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+    </tr>
+    <tr>
+      <th data-column="1" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Multiple Instances">MI <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="2" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Multiple Attributes">MA <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="3" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Multiple Relations">MR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="4" class="sortable" style="padding: 10px 6px; border-right: 1px solid #cbd5e1; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Text Rendering">TR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="5" class="sortable" style="padding: 10px 6px; border-right: 1px solid #cbd5e1; background: #e2e2e2; font-weight: 700; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="6" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Logic Reasoning">LR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="7" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Basic Reasoning">BR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="8" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Human Reasoning">HR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="9" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Physics Reasoning">PR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="10" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Geographic Reasoning">GR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="11" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Artistic Reasoning">AR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="12" class="sortable" style="padding: 10px 6px; border-right: 1px solid #e5e7eb; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Cultural Reasoning">CR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="13" class="sortable" style="padding: 10px 6px; border-right: 1px solid #cbd5e1; font-weight: 600; color: #475569; font-size: 11px; cursor: pointer; user-select: none; position: relative;" title="Relational Reasoning">RR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+      <th data-column="14" class="sortable" style="padding: 10px 6px; background: #e2e2e2; font-weight: 700; color: #475569; border-right: 1px solid #f59e0b; font-size: 11px; cursor: pointer; user-select: none; position: relative;">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+    </tr>
+  </thead>
 
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container"> -->
-      <!-- Paper video. -->
-      <!-- <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video"> -->
-            <!-- Youtube embed code here -->
-            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!-- End youtube video -->
+  <tbody id="tableBody">
+    <!-- Diffusion Models -->
+    <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Diffusion Models</i></td></tr>
+    <tr data-group="Diffusion Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">SD-3-Medium</td><td>59.1</td><td>57.9</td><td>35.4</td><td>9.5</td><td style="background:#E2E2E2; color:#475569;">40.4</td><td>22.1</td><td>21.1</td><td>35.3</td><td>51.0</td><td>37.4</td><td>47.3</td><td>35.0</td><td>27.1</td><td style="background:#E2E2E2; color:#475569;">34.5</td><td style="background:#fef3c7; color:#92400e;">36.5</td></tr>
+    <tr data-group="Diffusion Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">SD-3.5-Medium</td><td>59.5</td><td>60.6</td><td>33.1</td><td>10.6</td><td style="background:#E2E2E2; color:#475569;">41.0</td><td>19.9</td><td>20.5</td><td>33.5</td><td>53.7</td><td>33.4</td><td>52.7</td><td>35.6</td><td>22.0</td><td style="background:#E2E2E2; color:#475569;">33.9</td><td style="background:#fef3c7; color:#92400e;">36.3</td></tr>
+    <tr data-group="Diffusion Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">SD-3.5-Large</td><td>57.5</td><td>60.0</td><td>32.9</td><td>15.6</td><td style="background:#E2E2E2; color:#475569;">41.5</td><td>22.5</td><td>22.4</td><td>34.2</td><td>52.5</td><td>35.5</td><td>53.0</td><td>42.3</td><td>25.2</td><td style="background:#E2E2E2; color:#475569;">35.9</td><td style="background:#fef3c7; color:#92400e;">37.8</td></tr>
+    <tr data-group="Diffusion Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">FLUX.1-schnell</td><td>65.4</td><td>63.1</td><td>47.6</td><td>22.4</td><td style="background:#E2E2E2; color:#475569;">49.6</td><td>25.0</td><td>25.1</td><td>40.9</td><td>64.7</td><td>47.6</td><td>54.0</td><td>39.6</td><td>22.9</td><td style="background:#E2E2E2; color:#475569;">40.0</td><td style="background:#fef3c7; color:#92400e;">43.2</td></tr>
+    <tr data-group="Diffusion Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">FLUX.1-dev</td><td>58.6</td><td>60.3</td><td>44.1</td><td>31.1</td><td style="background:#E2E2E2; color:#475569;">48.6</td><td>24.8</td><td>23.0</td><td>36.0</td><td>61.8</td><td>42.4</td><td>57.2</td><td>36.3</td><td>30.3</td><td style="background:#E2E2E2; color:#475569;">39.0</td><td style="background:#fef3c7; color:#92400e;">42.2</td></tr>
+    <tr data-group="Diffusion Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">FLUX.1-Krea-dev</td><td style="color:#F88825; text-decoration:underline;">70.7</td><td style="color:#F88825; text-decoration:underline;">71.1</td><td style="color:#F88825; text-decoration:underline;">53.2</td><td>28.9</td><td style="background:#E2E2E2; color:#F88825; text-decoration:underline; font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825; text-decoration:underline;">26.1</td><td style="color:#F88825; text-decoration:underline;">44.5</td><td style="color:#F88825; text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825; text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td style="background:#E2E2E2; color:#F88825; text-decoration:underline; font-weight:700;">44.3</td><td style="background:#fef3c7; color:#F88825; text-decoration:underline; font-weight:700;">48.2</td></tr>
+    <tr data-group="Diffusion Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">PixArt-α</td><td>40.2</td><td>42.2</td><td>14.2</td><td>3.3</td><td style="background:#E2E2E2; color:#475569;">25.0</td><td>11.6</td><td>11.6</td><td>21.1</td><td>30.4</td><td>22.6</td><td>44.4</td><td>26.7</td><td>20.9</td><td style="background:#E2E2E2; color:#475569;">23.7</td><td style="background:#fef3c7; color:#92400e;">24.1</td></tr>
+    <tr data-group="Diffusion Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">PixArt-Σ</td><td>47.2</td><td>49.7</td><td>23.8</td><td>2.8</td><td style="background:#E2E2E2; color:#475569;">30.9</td><td>14.7</td><td>18.3</td><td>26.7</td><td>39.2</td><td>25.7</td><td>44.9</td><td>33.9</td><td>24.3</td><td style="background:#E2E2E2; color:#475569;">28.5</td><td style="background:#fef3c7; color:#92400e;">29.3</td></tr>
+    <tr data-group="Diffusion Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">HiDream-I1</td><td>62.5</td><td>62.0</td><td>42.9</td><td style="color:#F88825; text-decoration:underline;">33.9</td><td style="background:#E2E2E2; color:#475569;">50.3</td><td style="color:#F88825; text-decoration:underline;">34.2</td><td>24.5</td><td>40.9</td><td>53.2</td><td>34.2</td><td>50.3</td><td>46.1</td><td style="color:#F88825; text-decoration:underline;">31.7</td><td style="background:#E2E2E2; color:#475569;">39.4</td><td style="background:#fef3c7; color:#92400e;">43.0</td></tr>
+    <tr data-group="Diffusion Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Qwen-Image</td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td style="background:#E2E2E2; color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td style="background:#E2E2E2; color:#F88825; font-weight:bold;">49.3</td><td style="background:#fef3c7; color:#F88825; font-weight:bold;">58.9</td></tr>
 
+    <!-- Autoregressive Models -->
+    <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Autoregressive Models</i></td></tr>
+    <tr data-group="Autoregressive Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Infinity-8B</td><td>63.9</td><td>63.4</td><td>47.5</td><td>10.8</td><td style="background:#E2E2E2; color:#475569;">46.4</td><td>28.6</td><td>25.9</td><td>42.9</td><td>62.6</td><td>47.3</td><td style="color:#F88825; font-weight:bold;">59.2</td><td style="color:#F88825; text-decoration:underline;">46.9</td><td>24.6</td><td style="background:#E2E2E2; color:#475569;">42.3</td><td style="background:#fef3c7; color:#92400e;">43.6</td></tr>
+    <tr data-group="Autoregressive Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">GoT-R1-7B</td><td>48.8</td><td>55.6</td><td>32.9</td><td>6.1</td><td style="background:#E2E2E2; color:#475569;">35.8</td><td>22.1</td><td>19.2</td><td>31.3</td><td>49.2</td><td>34.8</td><td>46.2</td><td>32.1</td><td>14.6</td><td style="background:#E2E2E2; color:#475569;">31.2</td><td style="background:#fef3c7; color:#92400e;">32.7</td></tr>
 
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+    <!-- Unified Models -->
+    <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Unified Models</i></td></tr>
+    <tr data-group="Unified Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">BAGEL</td><td>64.9</td><td>65.2</td><td>45.8</td><td>9.7</td><td style="background:#E2E2E2; color:#475569;">46.4</td><td>23.4</td><td>21.9</td><td>33.0</td><td>51.6</td><td>31.2</td><td>50.4</td><td>32.4</td><td>29.3</td><td style="background:#E2E2E2; color:#475569;">34.1</td><td style="background:#fef3c7; color:#92400e;">38.2</td></tr>
+    <tr data-group="Unified Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">BAGEL w/ Think</td><td>57.7</td><td>60.8</td><td>37.8</td><td>2.2</td><td style="background:#E2E2E2; color:#475569;">39.6</td><td>25.5</td><td>25.4</td><td>33.9</td><td>58.6</td><td style="color:#F88825; text-decoration:underline;">53.5</td><td>56.9</td><td>41.6</td><td style="color:#F88825; font-weight:bold;">39.8</td><td style="background:#E2E2E2; color:#475569;">41.9</td><td style="background:#fef3c7; color:#92400e;">41.1</td></tr>
+    <tr data-group="Unified Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">show-o2-1.5B</td><td>59.5</td><td>60.3</td><td>36.1</td><td>4.6</td><td style="background:#E2E2E2; color:#475569;">40.1</td><td>21.6</td><td>21.8</td><td>37.1</td><td>47.7</td><td>39.9</td><td>44.7</td><td>29.0</td><td>24.0</td><td style="background:#E2E2E2; color:#475569;">33.2</td><td style="background:#fef3c7; color:#92400e;">35.5</td></tr>
+    <tr data-group="Unified Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">show-o2-7B</td><td>59.4</td><td>61.8</td><td>38.1</td><td>2.2</td><td style="background:#E2E2E2; color:#475569;">40.4</td><td>23.2</td><td>23.1</td><td>37.5</td><td>51.6</td><td>40.9</td><td>47.2</td><td>32.2</td><td>21.3</td><td style="background:#E2E2E2; color:#475569;">34.6</td><td style="background:#fef3c7; color:#92400e;">36.5</td></tr>
+    <tr data-group="Unified Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Janus-Pro-1B</td><td>51.0</td><td>54.5</td><td>33.8</td><td>2.9</td><td style="background:#E2E2E2; color:#475569;">35.5</td><td>12.9</td><td>18.1</td><td>24.7</td><td>13.4</td><td>7.1</td><td>15.1</td><td>6.7</td><td>6.4</td><td style="background:#E2E2E2; color:#475569;">13.0</td><td style="background:#fef3c7; color:#92400e;">20.5</td></tr>
+    <tr data-group="Unified Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Janus-Pro-7B</td><td>54.4</td><td>59.3</td><td>40.9</td><td>7.5</td><td style="background:#E2E2E2; color:#475569;">40.5</td><td>19.8</td><td>20.9</td><td>34.6</td><td>22.4</td><td>11.5</td><td>30.4</td><td>8.7</td><td>9.8</td><td style="background:#E2E2E2; color:#475569;">19.8</td><td style="background:#fef3c7; color:#92400e;">26.7</td></tr>
+    <tr data-group="Unified Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">BLIP3o-4B</td><td>45.6</td><td>47.5</td><td>20.3</td><td>0.5</td><td style="background:#E2E2E2; color:#475569;">28.5</td><td>14.2</td><td>17.7</td><td>26.3</td><td>36.3</td><td>37.6</td><td>37.8</td><td>31.3</td><td>24.8</td><td style="background:#E2E2E2; color:#475569;">28.2</td><td style="background:#fef3c7; color:#92400e;">28.3</td></tr>
+    <tr data-group="Unified Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">BLIP3o-8B</td><td>46.2</td><td>50.4</td><td>24.1</td><td>0.5</td><td style="background:#E2E2E2; color:#475569;">30.3</td><td>14.8</td><td>20.7</td><td>28.3</td><td>39.6</td><td>43.4</td><td>51.0</td><td>35.9</td><td>20.4</td><td style="background:#E2E2E2; color:#475569;">31.8</td><td style="background:#fef3c7; color:#92400e;">31.3</td></tr>
+    <tr data-group="Unified Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">OmniGen2-7B</td><td>67.9</td><td>64.1</td><td>48.3</td><td>19.2</td><td style="background:#E2E2E2; color:#475569;">49.9</td><td>24.7</td><td>23.2</td><td>43.3</td><td>63.1</td><td>46.1</td><td>54.2</td><td>36.5</td><td>24.1</td><td style="background:#E2E2E2; color:#475569;">39.4</td><td style="background:#fef3c7; color:#92400e;">42.9</td></tr>
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
+    <!-- Closed-Source Models -->
+    <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Closed-Source Models</i></td></tr>
+    <tr data-group="Closed-Source Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Seedream 3.0</td><td>79.9</td><td>78.0</td><td>63.7</td><td>47.6</td><td style="background:#E2E2E2; color:#475569;">67.3</td><td>36.8</td><td>33.6</td><td>50.3</td><td>75.1</td><td>54.9</td><td>61.7</td><td>59.1</td><td>31.2</td><td style="background:#E2E2E2; color:#475569;">50.3</td><td style="background:#fef3c7; color:#92400e;">56.0</td></tr>
+    <tr data-group="Closed-Source Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Gemini 2.0 Flash</td><td>67.5</td><td>68.5</td><td>49.7</td><td>62.9</td><td style="background:#E2E2E2; color:#475569;">62.1</td><td>39.3</td><td>39.7</td><td>47.9</td><td>69.3</td><td>58.5</td><td>63.7</td><td>51.2</td><td>39.9</td><td style="background:#E2E2E2; color:#475569;">51.2</td><td style="background:#fef3c7; color:#92400e;">54.8</td></tr>
+    <tr data-group="Closed-Source Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Nano Banana</td><td>77.9</td><td style="color:#319B62; font-weight:bold;">85.7</td><td style="color:#319B62; text-decoration:underline;">72.6</td><td style="color:#319B62; text-decoration:underline;">86.3</td><td style="background:#E2E2E2; color:#319B62; text-decoration:underline; font-weight:700;">80.6</td><td style="color:#319B62; font-weight:bold;">64.5</td><td style="color:#319B62; font-weight:bold;">64.9</td><td style="color:#319B62; font-weight:bold;">67.1</td><td style="color:#319B62; text-decoration:underline;">85.2</td><td style="color:#319B62; font-weight:bold;">84.1</td><td style="color:#319B62; font-weight:bold;">83.1</td><td>71.3</td><td style="color:#319B62; font-weight:bold;">68.7</td><td style="background:#E2E2E2; color:#319B62; font-weight:bold;">73.6</td><td style="background:#fef3c7; color:#319B62; text-decoration:underline; font-weight:700;">75.9</td></tr>
+    <tr data-group="Closed-Source Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Imagen 4</td><td style="color:#319B62; text-decoration:underline;">82.8</td><td>74.3</td><td>66.3</td><td style="color:#319B62; font-weight:bold;">90.2</td><td style="background:#E2E2E2; color:#475569;">78.4</td><td>44.5</td><td>51.8</td><td>56.8</td><td>82.8</td><td>79.5</td><td>73.3</td><td style="color:#319B62; text-decoration:underline;">72.8</td><td style="color:#319B62; text-decoration:underline;">65.3</td><td style="background:#E2E2E2; color:#475569;">65.9</td><td style="background:#fef3c7; color:#92400e;">70.0</td></tr>
+    <tr data-group="Closed-Source Models" style="transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='white';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">Imagen 4 Ultra</td><td style="color:#319B62; font-weight:bold;">90.0</td><td style="color:#319B62; text-decoration:underline;">80.0</td><td style="color:#319B62; font-weight:bold;">73.2</td><td>86.2</td><td style="background:#E2E2E2; color:#319B62; font-weight:bold;">82.4</td><td style="color:#319B62; text-decoration:underline;">63.6</td><td style="color:#319B62; text-decoration:underline;">62.4</td><td style="color:#319B62; text-decoration:underline;">66.1</td><td style="color:#319B62; font-weight:bold;">88.5</td><td style="color:#319B62; text-decoration:underline;">82.8</td><td style="color:#319B62; text-decoration:underline;">83.0</td><td style="color:#319B62; font-weight:bold;">76.3</td><td>60.7</td><td style="background:#E2E2E2; color:#319B62; text-decoration:underline;">72.9</td><td style="background:#fef3c7; color:#319B62; font-weight:bold;">76.1</td></tr>
+    <tr data-group="Closed-Source Models" style="background-color: #fefefe; transition: all 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.zIndex='10'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'; this.style.backgroundColor='#f8fafc';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='1'; this.style.boxShadow='none'; this.style.backgroundColor='#fefefe';"><td style="text-align:left; font-weight:600; color:#1e293b; background:#fafbfc; border-right:1px solid #e2e8f0; padding:10px;">GPT-Image</td><td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td style="background:#E2E2E2; color:#475569;">79.8</td><td>59.0</td><td>54.8</td><td>65.6</td><td>87.3</td><td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td><td style="background:#E2E2E2; color:#475569;">69.0</td><td style="background:#fef3c7; color:#92400e;">72.6</td></tr>
+  </tbody>
+
+  <style>
+    #benchmarkTable th,
+    #benchmarkTable td {
+      vertical-align: middle !important;
+    }
+    #benchmarkTable th.sortable { transition: background-color .15s, transform .15s; }
+    #benchmarkTable th.sortable:hover { background-color: #e2e8f0; transform: translateY(-1px); }
+  </style>
+
+</table>
+
+<p id="legend" class="subtle" style="text-align:justify; font-size:16px; line-height:1.6;">
+  <strong>Main results on our <span style="font-variant:small-caps;">T2I-CoReBench</span></strong> assessing both <em>composition</em> and <em>reasoning</em> capabilities evaluated by Gemini 2.5 Flash. 
+  <span style="background: #e5e7eb; padding: 2px 6px; border-radius: 3px; font-weight: 600; color: #374151;">Mean</span> denotes the mean score for each capability. 
+  The best and second-best results are marked in <strong>bold</strong> and <u>underline</u> for 
+  <span style="color: #ea580c; font-weight: 600;">open-</span> and <span style="color: #059669; font-weight: 600;">closed-</span> models, respectively.
+</p>
+
+<script>
+(function() {
+  let currentSortColumn = -1;
+  let isAscending = true;
+  
+  // 初始化排序功能
+  function initSorting() {
+    const table = document.getElementById('benchmarkTable');
+    const headers = table.querySelectorAll('th.sortable');
+    
+    headers.forEach(header => {
+      header.addEventListener('click', function() {
+        const column = parseInt(this.getAttribute('data-column'));
+        sortTable(column);
+      });
+    });
+  }
+  
+  // 排序表格
+  function sortTable(column) {
+    const table = document.getElementById('benchmarkTable');
+    const tbody = document.getElementById('tableBody');
+    const rows = Array.from(tbody.querySelectorAll('tr:not(.section-row)'));
+    
+    // 更新排序状态
+    if (currentSortColumn === column) {
+      isAscending = !isAscending;
+    } else {
+      currentSortColumn = column;
+      isAscending = true;
+    }
+    
+    // 更新排序指示器
+    updateSortIndicators(column);
+    
+    // 按组分组排序
+    const groups = {};
+    rows.forEach(row => {
+      const group = row.getAttribute('data-group');
+      if (!groups[group]) groups[group] = [];
+      groups[group].push(row);
+    });
+    
+    // 对每组内的行进行排序
+    Object.keys(groups).forEach(groupName => {
+      groups[groupName].sort((a, b) => {
+        const aValue = getCellValue(a, column);
+        const bValue = getCellValue(b, column);
         
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
+        let result;
+        if (column === 0) { // 模型名称 - 字符串排序
+          result = aValue.localeCompare(bValue, undefined, { numeric: true, sensitivity: 'base' });
+        } else { // 数字排序
+          result = parseFloat(aValue) - parseFloat(bValue);
+        }
+        
+        return isAscending ? result : -result;
+      });
+    });
+    
+    // 重建表格
+    rebuildTable(groups);
+  }
+  
+  // 获取单元格值
+  function getCellValue(row, column) {
+    const cell = row.cells[column];
+    if (!cell) return '';
+    
+    // 移除颜色和样式，只保留文本内容
+    return cell.textContent || cell.innerText || '';
+  }
+  
+  // 更新排序指示器
+  function updateSortIndicators(activeColumn) {
+    const indicators = document.querySelectorAll('.sort-indicator');
+    indicators.forEach((indicator, index) => {
+      const header = indicator.closest('th');
+      const column = parseInt(header.getAttribute('data-column'));
+      
+      if (column === activeColumn) {
+        indicator.textContent = isAscending ? '↑' : '↓';
+        indicator.style.opacity = '1';
+        indicator.style.color = '#3b82f6';
+      } else {
+        indicator.textContent = '↕';
+        indicator.style.opacity = '0.3';
+        indicator.style.color = 'inherit';
+      }
+    });
+  }
+  
+  // 重建表格
+  function rebuildTable(groups) {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    
+    const groupOrder = ['Diffusion Models', 'Autoregressive Models', 'Unified Models', 'Closed-Source Models'];
+    
+    groupOrder.forEach(groupName => {
+      if (groups[groupName]) {
+        // 添加分组标题
+        const sectionRow = document.createElement('tr');
+        sectionRow.className = 'section-row';
+        sectionRow.innerHTML = `<td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #475569; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>${groupName}</i></td>`;
+        tbody.appendChild(sectionRow);
+        
+        // 添加排序后的行
+        groups[groupName].forEach((row, index) => {
+          // 恢复交替行背景色
+          if (index % 2 === 0) {
+            row.style.backgroundColor = 'white';
+          } else {
+            row.style.backgroundColor = '#fefefe';
+          }
+          tbody.appendChild(row);
+        });
+      }
+    });
+  }
+  
+  // 页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', initSorting);
+  
+  // 如果DOMContentLoaded已经触发，直接初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSorting);
+  } else {
+    initSorting();
+  }
+})();
+</script>
+</div>
+</div>
+<!-- End Evaluation Results -->
 
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@misc{li2025easier,
+      title={Easier Painting Than Thinking: Can Text-to-Image Models Set the Stage, but Not Direct the Play?}, 
+      author={Ouxiang Li and Yuan Wang and Xinting Hu and Huijuan Huang and Rui Chen and Jiarong Ou and Xin Tao and Pengfei Wan and Fuli Feng},
+      year={2025},
+      eprint={2509.03516},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2509.03516}, 
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
