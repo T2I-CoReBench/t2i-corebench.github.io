@@ -693,6 +693,27 @@
       }
     </style>
 
+    <style>
+      tr.expandable { cursor: pointer; }
+      tr.expandable > td.model { position: relative; }
+
+      .arrow {
+        position: absolute;
+        left: -22px;
+        top: 7px;
+        font-size: 25px;
+        font-weight: 700;
+        color: #444;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 1;
+        padding: 6px 8px;   /* 扩大可点击范围 */
+        margin: -6px -8px;
+        border-radius: 4px;
+      }
+      .arrow:hover { background: rgba(0,0,0,0.05); }
+    </style>
+
     <table border="1" cellspacing="0" cellpadding="4" id="benchmarkTable">
 
       <thead>
@@ -734,11 +755,18 @@
         <tr data-group="Diffusion Models" class="data-row"><td class="model"><a href="https://huggingface.co/stabilityai/stable-diffusion-3.5-large" target="_blank">SD-3.5-Large</a></td><td>57.5</td><td>60.0</td><td>32.9</td><td>15.6</td><td class="mean-col">41.5</td><td>22.5</td><td>22.4</td><td>34.2</td><td>52.5</td><td>35.5</td><td>53.0</td><td>42.3</td><td>25.2</td><td class="mean-col">35.9</td><td class="overall-col">37.8</td></tr>
         <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/black-forest-labs/FLUX.1-schnell" target="_blank">FLUX.1-schnell</a></td><td>65.4</td><td>63.1</td><td>47.6</td><td>22.4</td><td class="mean-col">49.6</td><td>25.0</td><td>25.1</td><td>40.9</td><td>64.7</td><td>47.6</td><td>54.0</td><td>39.6</td><td>22.9</td><td class="mean-col">40.0</td><td class="overall-col">43.2</td></tr>
         <tr data-group="Diffusion Models" class="data-row"><td class="model"><a href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1-dev</a></td><td>58.6</td><td>60.3</td><td>44.1</td><td>31.1</td><td class="mean-col">48.6</td><td>24.8</td><td>23.0</td><td>36.0</td><td>61.8</td><td>42.4</td><td>57.2</td><td>36.3</td><td>30.3</td><td class="mean-col">39.0</td><td class="overall-col">42.2</td></tr>
-        <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev" target="_blank">FLUX.1-Krea-dev</a></td><td style="color:#F88825; text-decoration:underline;">70.7</td><td style="color:#F88825; text-decoration:underline;">71.1</td><td style="color:#F88825; text-decoration:underline;">53.2</td><td>28.9</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825; text-decoration:underline;">26.1</td><td style="color:#F88825; text-decoration:underline;">44.5</td><td style="color:#F88825; text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825; text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">44.3</td><td class="overall-col" style="color:#F88825; text-decoration:underline; font-weight:700;">48.2</td></tr>
+
+        <!-- <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev" target="_blank">FLUX.1-Krea-dev</a></td><td style="color:#F88825; text-decoration:underline;">70.7</td><td style="color:#F88825; text-decoration:underline;">71.1</td><td style="color:#F88825; text-decoration:underline;">53.2</td><td>28.9</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825; text-decoration:underline;">26.1</td><td style="color:#F88825; text-decoration:underline;">44.5</td><td style="color:#F88825; text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825; text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">44.3</td><td class="overall-col" style="color:#F88825; text-decoration:underline; font-weight:700;">48.2</td></tr> -->
+        <tr data-group="Diffusion Models" class="data-row expandable" data-detail="flux-krea-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev" target="_blank">FLUX.1-Krea-dev</a></td><td style="color:#F88825;text-decoration:underline;">70.7</td><td style="color:#F88825;text-decoration:underline;">71.1</td><td style="color:#F88825;text-decoration:underline;">53.2</td><td>28.9</td><td class="mean-col" style="color:#F88825;text-decoration:underline;font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825;text-decoration:underline;">26.1</td><td style="color:#F88825;text-decoration:underline;">44.5</td><td style="color:#F88825;text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825;text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td class="mean-col" style="color:#F88825;text-decoration:underline;font-weight:700;">44.3</td><td class="overall-col" style="color:#F88825;text-decoration:underline;font-weight:700;">48.2</td></tr>
+        <tr id="flux-krea-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">64.9</td><td style="color:#777;">49.8</td><td style="color:#777;">54.9</td><td style="color:#777;">77.9</td><td style="color:#777;">74.6</td><td style="color:#777;">71.1</td><td style="color:#777;">61.5</td><td style="color:#777;">69.2</td><td class="mean-col"><span style="color:#777;">65.5</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑21.2</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+
         <tr data-group="Diffusion Models" class="data-row"><td class="model"><a href="https://huggingface.co/PixArt-alpha/PixArt-XL-2-1024-MS" target="_blank">PixArt-α</a></td><td>40.2</td><td>42.2</td><td>14.2</td><td>3.3</td><td class="mean-col">25.0</td><td>11.6</td><td>11.6</td><td>21.1</td><td>30.4</td><td>22.6</td><td>44.4</td><td>26.7</td><td>20.9</td><td class="mean-col">23.7</td><td class="overall-col">24.1</td></tr>
         <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS" target="_blank">PixArt-Σ</a></td><td>47.2</td><td>49.7</td><td>23.8</td><td>2.8</td><td class="mean-col">30.9</td><td>14.7</td><td>18.3</td><td>26.7</td><td>39.2</td><td>25.7</td><td>44.9</td><td>33.9</td><td>24.3</td><td class="mean-col">28.5</td><td class="overall-col">29.3</td></tr>
         <tr data-group="Diffusion Models" class="data-row"><td class="model"><a href="https://huggingface.co/HiDream-ai/HiDream-I1-Full" target="_blank">HiDream-I1</a></td><td>62.5</td><td>62.0</td><td>42.9</td><td style="color:#F88825; text-decoration:underline;">33.9</td><td class="mean-col">50.3</td><td style="color:#F88825; text-decoration:underline;">34.2</td><td>24.5</td><td>40.9</td><td>53.2</td><td>34.2</td><td>50.3</td><td>46.1</td><td style="color:#F88825; text-decoration:underline;">31.7</td><td class="mean-col">39.4</td><td class="overall-col">43.0</td></tr>
-        <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/Qwen/Qwen-Image" target="_blank">Qwen-Image</a></td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td class="mean-col" style="color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td class="mean-col" style="color:#F88825; font-weight:bold;">49.3</td><td class="overall-col" style="color:#F88825; font-weight:bold;">58.9</td></tr>
+
+        <!-- <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/Qwen/Qwen-Image" target="_blank">Qwen-Image</a></td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td class="mean-col" style="color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td class="mean-col" style="color:#F88825; font-weight:bold;">49.3</td><td class="overall-col" style="color:#F88825; font-weight:bold;">58.9</td></tr> -->
+        <tr data-group="Diffusion Models" class="data-row expandable" data-detail="qwen-image-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://huggingface.co/Qwen/Qwen-Image" target="_blank">Qwen-Image</a></td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td class="mean-col" style="color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td class="mean-col" style="color:#F88825; font-weight:bold;">49.3</td><td class="overall-col" style="color:#F88825; font-weight:bold;">58.9</td></tr>
+        <tr id="qwen-image-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.1</td><td style="color:#777;">59.6</td><td style="color:#777;">64.2</td><td style="color:#777;">84.6</td><td style="color:#777;">80.3</td><td style="color:#777;">71.7</td><td style="color:#777;">71.9</td><td style="color:#777;">64.5</td><td class="mean-col"><span style="color:#777;">72.7</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑23.4</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
         <!-- Autoregressive Models -->
         <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Autoregressive Models</i></td></tr>
@@ -758,99 +786,27 @@
         <tr data-group="Unified Models" class="data-row"><td class="model"><a href="https://github.com/VectorSpaceLab/OmniGen2" target="_blank">OmniGen2-7B</a></td><td>67.9</td><td>64.1</td><td>48.3</td><td>19.2</td><td class="mean-col">49.9</td><td>24.7</td><td>23.2</td><td>43.3</td><td>63.1</td><td>46.1</td><td>54.2</td><td>36.5</td><td>24.1</td><td class="mean-col">39.4</td><td class="overall-col">42.9</td></tr>
 
         <!-- Closed-Source Models -->
-        <tr class="section-row">
-          <td colspan="16" style="font-weight:700; text-align:center; background:#fafafa; color:#1e293b; font-size:14px; padding:12px; border-top:1px solid #cbd5e1;">
-            <i>Closed-Source Models</i>
-          </td>
-        </tr>
+        <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background:#fafafa; color:#1e293b; font-size:14px; padding:12px; border-top:1px solid #cbd5e1;"><i>Closed-Source Models</i></td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row">
-          <td class="model"><a href="https://seed.bytedance.com/en/tech/seedream3_0" target="_blank">Seedream 3.0</a></td>
-          <td>79.9</td><td>78.0</td><td>63.7</td><td>47.6</td><td class="mean-col">67.3</td>
-          <td>36.8</td><td>33.6</td><td>50.3</td><td>75.1</td><td>54.9</td><td>61.7</td><td>59.1</td><td>31.2</td><td class="mean-col">50.3</td><td class="overall-col">56.0</td>
-        </tr>
+        <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://seed.bytedance.com/en/tech/seedream3_0" target="_blank">Seedream 3.0</a></td><td>79.9</td><td>78.0</td><td>63.7</td><td>47.6</td><td class="mean-col">67.3</td><td>36.8</td><td>33.6</td><td>50.3</td><td>75.1</td><td>54.9</td><td>61.7</td><td>59.1</td><td>31.2</td><td class="mean-col">50.3</td><td class="overall-col">56.0</td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;">
-          <td class="model"><a href="https://seed.bytedance.com/en/seedream4_0" target="_blank">Seedream 4.0</a></td>
-          <td style="color:#319B62; font-weight:bold;">91.5</td>
-          <td style="color:#319B62; font-weight:bold;">84.5</td>
-          <td style="color:#319B62; font-weight:bold;">75.0</td>
-          <td style="color:#319B62; font-weight:bold;">93.6</td>
-          <td class="mean-col" style="color:#319B62; font-weight:bold;">86.1</td>
-          <td style="color:#319B62; font-weight:bold;">76.3</td>
-          <td>54.1</td>
-          <td>60.7</td>
-          <td>85.8</td>
-          <td style="color:#319B62; font-weight:bold;">85.9</td>
-          <td>77.1</td>
-          <td>71.6</td>
-          <td>47.9</td>
-          <td class="mean-col">69.9</td>
-          <td class="overall-col">75.3</td>
-        </tr>
+        <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;"><td class="model"><a href="https://seed.bytedance.com/en/seedream4_0" target="_blank">Seedream 4.0</a></td><td style="color:#319B62; font-weight:bold;">91.5</td><td style="color:#319B62; font-weight:bold;">84.5</td><td style="color:#319B62; font-weight:bold;">75.0</td><td style="color:#319B62; font-weight:bold;">93.6</td><td class="mean-col" style="color:#319B62; font-weight:bold;">86.1</td><td style="color:#319B62; font-weight:bold;">76.3</td><td>54.1</td><td>60.7</td><td>85.8</td><td style="color:#319B62; font-weight:bold;">85.9</td><td>77.1</td><td>71.6</td><td>47.9</td><td class="mean-col">69.9</td><td class="overall-col">75.3</td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row">
-          <td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash#image-generation" target="_blank">Gemini 2.0 Flash</a></td>
-          <td>67.5</td><td>68.5</td><td>49.7</td><td>62.9</td><td class="mean-col">62.1</td>
-          <td>39.3</td><td>39.7</td><td>47.9</td><td>69.3</td><td>58.5</td><td>63.7</td><td>51.2</td><td>39.9</td><td class="mean-col">51.2</td><td class="overall-col">54.8</td>
-        </tr>
+        <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-0-flash#image-generation" target="_blank">Gemini 2.0 Flash</a></td><td>67.5</td><td>68.5</td><td>49.7</td><td>62.9</td><td class="mean-col">62.1</td><td>39.3</td><td>39.7</td><td>47.9</td><td>69.3</td><td>58.5</td><td>63.7</td><td>51.2</td><td>39.9</td><td class="mean-col">51.2</td><td class="overall-col">54.8</td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;">
-          <td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash#image" target="_blank">Nano Banana</a></td>
-          <td>85.7</td><td>77.9</td><td>72.6</td><td>86.3</td><td class="mean-col">80.6</td>
-          <td style="color:#319B62; text-decoration:underline;">64.5</td>
-          <td style="color:#319B62; font-weight:bold;">64.9</td>
-          <td style="color:#319B62; font-weight:bold;">67.1</td>
-          <td>85.2</td>
-          <td style="color:#319B62; text-decoration:underline;">84.1</td>
-          <td style="color:#319B62; font-weight:bold;">83.1</td>
-          <td>71.3</td>
-          <td style="color:#319B62; font-weight:bold;">68.7</td>
-          <td class="mean-col" style="color:#319B62; font-weight:bold;">73.6</td>
-          <td class="overall-col" style="color:#319B62; text-decoration:underline;">75.9</td>
-        </tr>
+        <!-- <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash#image" target="_blank">Nano Banana</a></td><td>85.7</td><td>77.9</td><td>72.6</td><td>86.3</td><td class="mean-col">80.6</td><td style="color:#319B62; text-decoration:underline;">64.5</td><td style="color:#319B62; font-weight:bold;">64.9</td><td style="color:#319B62; font-weight:bold;">67.1</td><td>85.2</td><td style="color:#319B62; text-decoration:underline;">84.1</td><td style="color:#319B62; font-weight:bold;">83.1</td><td>71.3</td><td style="color:#319B62; font-weight:bold;">68.7</td><td class="mean-col" style="color:#319B62; font-weight:bold;">73.6</td><td class="overall-col" style="color:#319B62; text-decoration:underline;">75.9</td></tr> -->
+        <tr data-group="Closed-Source Models" class="data-row expandable" data-detail="nano-banana-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash#image" target="_blank">Nano Banana</a></td><td>85.7</td><td>77.9</td><td>72.6</td><td>86.3</td><td class="mean-col">80.6</td><td style="color:#319B62; text-decoration:underline;">64.5</td><td style="color:#319B62; font-weight:bold;">64.9</td><td style="color:#319B62; font-weight:bold;">67.1</td><td>85.2</td><td style="color:#319B62; text-decoration:underline;">84.1</td><td style="color:#319B62; font-weight:bold;">83.1</td><td>71.3</td><td style="color:#319B62; font-weight:bold;">68.7</td><td class="mean-col" style="color:#319B62; font-weight:bold;">73.6</td><td class="overall-col" style="color:#319B62; text-decoration:underline;">75.9</td></tr>
+        <tr id="nano-banana-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">86.5</td><td style="color:#777;">67.7</td><td style="color:#777;">73.7</td><td style="color:#777;">88.8</td><td style="color:#777;">83.2</td><td style="color:#777;">81.4</td><td style="color:#777;">72.4</td><td style="color:#777;">72.1</td><td class="mean-col"><span style="color:#777;">78.2</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑4.6</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row">
-          <td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate-001" target="_blank">Imagen 4</a></td>
-          <td>82.8</td><td>74.3</td><td>66.3</td>
-          <td style="color:#319B62; text-decoration:underline;">90.2</td>
-          <td class="mean-col">78.4</td>
-          <td>44.5</td><td>51.8</td><td>56.8</td>
-          <td>82.8</td><td>79.5</td><td>73.3</td>
-          <td style="color:#319B62; text-decoration:underline;">72.8</td>
-          <td style="color:#319B62; text-decoration:underline;">65.3</td>
-          <td class="mean-col">65.9</td>
-          <td class="overall-col">70.0</td>
-        </tr>
 
-        <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;">
-          <td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-ultra-generate-001" target="_blank">Imagen 4 Ultra</a></td>
-          <td style="color:#319B62; text-decoration:underline;">90.0</td>
-          <td style="color:#319B62; text-decoration:underline;">80.0</td>
-          <td style="color:#319B62; text-decoration:underline;">73.2</td>
-          <td>86.2</td>
-          <td class="mean-col" style="color:#319B62; text-decoration:underline;">82.4</td>
-          <td>63.6</td>
-          <td style="color:#319B62; text-decoration:underline;">62.4</td>
-          <td style="color:#319B62; text-decoration:underline;">66.1</td>
-          <td style="color:#319B62; font-weight:bold;">88.5</td>
-          <td>82.8</td>
-          <td style="color:#319B62; text-decoration:underline;">83.0</td>
-          <td style="color:#319B62; font-weight:bold;">76.3</td>
-          <td>60.7</td>
-          <td class="mean-col" style="color:#319B62; text-decoration:underline;">72.9</td>
-          <td class="overall-col" style="color:#319B62; font-weight:bold;">76.1</td>
-        </tr>
+        <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate-001" target="_blank">Imagen 4</a></td><td>82.8</td><td>74.3</td><td>66.3</td><td style="color:#319B62; text-decoration:underline;">90.2</td><td class="mean-col">78.4</td><td>44.5</td><td>51.8</td><td>56.8</td><td>82.8</td><td>79.5</td><td>73.3</td><td style="color:#319B62; text-decoration:underline;">72.8</td><td style="color:#319B62; text-decoration:underline;">65.3</td><td class="mean-col">65.9</td><td class="overall-col">70.0</td></tr>
 
-        <tr data-group="Closed-Source Models" class="data-row">
-          <td class="model"><a href="https://platform.openai.com/docs/models/gpt-image-1" target="_blank">GPT-Image</a></td>
-          <td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td class="mean-col">79.8</td>
-          <td>59.0</td><td>54.8</td><td>65.6</td>
-          <td style="color:#319B62; text-decoration:underline;">87.3</td>
-          <td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td>
-          <td class="mean-col">69.0</td>
-          <td class="overall-col">72.6</td>
-        </tr>
+        <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-ultra-generate-001" target="_blank">Imagen 4 Ultra</a></td><td style="color:#319B62; text-decoration:underline;">90.0</td><td style="color:#319B62; text-decoration:underline;">80.0</td><td style="color:#319B62; text-decoration:underline;">73.2</td><td>86.2</td><td class="mean-col" style="color:#319B62; text-decoration:underline;">82.4</td><td>63.6</td><td style="color:#319B62; text-decoration:underline;">62.4</td><td style="color:#319B62; text-decoration:underline;">66.1</td><td style="color:#319B62; font-weight:bold;">88.5</td><td>82.8</td><td style="color:#319B62; text-decoration:underline;">83.0</td><td style="color:#319B62; font-weight:bold;">76.3</td><td>60.7</td><td class="mean-col" style="color:#319B62; text-decoration:underline;">72.9</td><td class="overall-col" style="color:#319B62; font-weight:bold;">76.1</td></tr>
+
+        <!-- <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://platform.openai.com/docs/models/gpt-image-1" target="_blank">GPT-Image</a></td><td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td class="mean-col">79.8</td><td>59.0</td><td>54.8</td><td>65.6</td><td style="color:#319B62; text-decoration:underline;">87.3</td><td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td><td class="mean-col">69.0</td><td class="overall-col">72.6</td></tr> -->
+        <tr data-group="Closed-Source Models" class="data-row expandable" data-detail="gpt-image-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://platform.openai.com/docs/models/gpt-image-1" target="_blank">GPT-Image</a></td><td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td class="mean-col">79.8</td><td>59.0</td><td>54.8</td><td>65.6</td><td style="color:#319B62; text-decoration:underline;">87.3</td><td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td><td class="mean-col">69.0</td><td class="overall-col">72.6</td></tr>
+        <tr id="gpt-image-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.2</td><td style="color:#777;">71.0</td><td style="color:#777;">78.8</td><td style="color:#777;">87.1</td><td style="color:#777;">82.2</td><td style="color:#777;">85.9</td><td style="color:#777;">75.1</td><td style="color:#777;">73.9</td><td class="mean-col"><span style="color:#777;">79.9</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑10.9</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+
       </tbody>
 
     </table>
@@ -863,133 +819,191 @@
     </p>
 
     <script>
-    (function() {
+    (function () {
       let currentSortColumn = -1;
       let isAscending = true;
-      
-      // 初始化排序功能
+
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+      // 自动找到表和 tbody（兼容你现有 DOM）
+      function getTableAndBody() {
+        // 你的表没有 id，用包含 sortable 表头的最近 table
+        const anySortableTh = $('th.sortable');
+        const table = anySortableTh ? anySortableTh.closest('table') : $('table');
+        const tbody = table ? (table.tBodies[0] || table.querySelector('tbody')) : null;
+        return { table, tbody };
+      }
+
       function initSorting() {
-        const table = document.getElementById('benchmarkTable');
-        const headers = table.querySelectorAll('th.sortable');
-        
-        headers.forEach(header => {
-          header.addEventListener('click', function() {
-            const column = parseInt(this.getAttribute('data-column'));
-            sortTable(column);
+        const { table } = getTableAndBody();
+        if (!table) return;
+        $$('.sortable', table).forEach(th => {
+          th.addEventListener('click', () => {
+            const col = parseInt(th.getAttribute('data-column'), 10);
+            if (!Number.isFinite(col)) return;
+            sortTable(col);
           });
         });
       }
-      
-      // 排序表格
+
       function sortTable(column) {
-        const table = document.getElementById('benchmarkTable');
-        const tbody = document.getElementById('tableBody');
-        const rows = Array.from(tbody.querySelectorAll('tr:not(.section-row)'));
-        
-        // 更新排序状态
-        if (currentSortColumn === column) {
-          isAscending = !isAscending;
-        } else {
-          currentSortColumn = column;
-          isAscending = true;
+        const { table, tbody } = getTableAndBody();
+        if (!table || !tbody) return;
+
+        // 切换排序状态
+        if (currentSortColumn === column) isAscending = !isAscending;
+        else { currentSortColumn = column; isAscending = true; }
+        updateSortIndicators(table, column);
+
+        const all = Array.from(tbody.children);
+        const sectionRows = all.filter(r => r.classList && r.classList.contains('section-row'));
+
+        if (sectionRows.length === 0) {
+          // 无分组：只取主行排序（详情行不参与）
+          const mainRows = all.filter(r => r.classList && r.classList.contains('data-row'));
+          const frag = document.createDocumentFragment();
+          const sorted = sortMainRows(mainRows, column);
+          sorted.forEach(main => appendMainAndDetail(frag, main));
+          tbody.innerHTML = '';
+          tbody.appendChild(frag);
+          return;
         }
-        
-        // 更新排序指示器
-        updateSortIndicators(column);
-        
-        // 按组分组排序
-        const groups = {};
-        rows.forEach(row => {
-          const group = row.getAttribute('data-group');
-          if (!groups[group]) groups[group] = [];
-          groups[group].push(row);
-        });
-        
-        // 对每组内的行进行排序
-        Object.keys(groups).forEach(groupName => {
-          groups[groupName].sort((a, b) => {
-            const aValue = getCellValue(a, column);
-            const bValue = getCellValue(b, column);
-            
-            let result;
-            if (column === 0) { // 模型名称 - 字符串排序
-              result = aValue.localeCompare(bValue, undefined, { numeric: true, sensitivity: 'base' });
-            } else { // 数字排序
-              result = parseFloat(aValue) - parseFloat(bValue);
+
+        // 有分组：按每个分组（section-row 到下个 section-row 之间）分别排序
+        const groups = [];
+        for (let i = 0; i < all.length; i++) {
+          const row = all[i];
+          if (row.classList && row.classList.contains('section-row')) {
+            const start = i + 1;
+            let end = all.length;
+            for (let j = start; j < all.length; j++) {
+              if (all[j].classList && all[j].classList.contains('section-row')) { end = j; break; }
             }
-            
-            return isAscending ? result : -result;
-          });
+            groups.push({ sectionRow: row, rows: all.slice(start, end) });
+          }
+        }
+
+        const fragAll = document.createDocumentFragment();
+        groups.forEach(group => {
+          // 先放回原有分组标题（不新建，避免重复/丢样式）
+          fragAll.appendChild(group.sectionRow);
+
+          // 只按主行排序；详情行跟随主行
+          const mains = group.rows.filter(r => r.classList && r.classList.contains('data-row'));
+          const sorted = sortMainRows(mains, column);
+          sorted.forEach(main => appendMainAndDetail(fragAll, main));
         });
-        
-        // 重建表格
-        rebuildTable(groups);
+
+        tbody.innerHTML = '';
+        tbody.appendChild(fragAll);
       }
-      
-      // 获取单元格值
+
+      // 比较逻辑：第 0 列按文本，其它列按数字（NaN 置后）
+      function sortMainRows(mainRows, column) {
+        const arr = mainRows.slice();
+        arr.sort((a, b) => {
+          const av = getCellValue(a, column);
+          const bv = getCellValue(b, column);
+          if (column === 0) {
+            const res = av.localeCompare(bv, undefined, { numeric: true, sensitivity: 'base' });
+            return isAscending ? res : -res;
+          } else {
+            const an = parseFloat(av), bn = parseFloat(bv);
+            let res;
+            if (Number.isNaN(an) && Number.isNaN(bn)) res = 0;
+            else if (Number.isNaN(an)) res = 1;
+            else if (Number.isNaN(bn)) res = -1;
+            else res = an - bn;
+            return isAscending ? res : -res;
+          }
+        });
+        return arr;
+      }
+
       function getCellValue(row, column) {
         const cell = row.cells[column];
-        if (!cell) return '';
-        return cell.textContent || cell.innerText || '';
+        return cell ? cell.textContent.trim() : '';
+        }
+
+      // 把主行及其详情行成对插入容器（保持详情行当前 display，不改展开/收起状态）
+      function appendMainAndDetail(container, mainRow) {
+        container.appendChild(mainRow);
+        if (!mainRow.classList.contains('expandable')) return;
+        const detailId = mainRow.dataset.detail;
+        if (!detailId) return;
+        const detailRow = document.getElementById(detailId);
+        if (detailRow) container.appendChild(detailRow);
       }
-      
-      // 更新排序指示器
-      function updateSortIndicators(activeColumn) {
-        const indicators = document.querySelectorAll('.sort-indicator');
-        indicators.forEach((indicator) => {
-          const header = indicator.closest('th');
-          const column = parseInt(header.getAttribute('data-column'));
-          
-          if (column === activeColumn) {
-            indicator.textContent = isAscending ? '↑' : '↓';
-            indicator.style.opacity = '1';
-            indicator.style.color = '#3b82f6';
+
+      // 可选：更新表头里的 .sort-indicator（没有就跳过）
+      function updateSortIndicators(table, activeColumn) {
+        $$('.sort-indicator', table).forEach(ind => {
+          const th = ind.closest('th');
+          const col = parseInt(th?.getAttribute('data-column'), 10);
+          if (col === activeColumn) {
+            ind.textContent = isAscending ? '↑' : '↓';
+            ind.style.opacity = '1';
+            ind.style.color = '#3b82f6';
           } else {
-            indicator.textContent = '↕';
-            indicator.style.opacity = '0.3';
-            indicator.style.color = 'inherit';
+            ind.textContent = '↕';
+            ind.style.opacity = '0.3';
+            ind.style.color = '';
           }
         });
       }
-      
-      // 重建表格
-      function rebuildTable(groups) {
-        const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = '';
-        
-        const groupOrder = ['Diffusion Models', 'Autoregressive Models', 'Unified Models', 'Closed-Source Models'];
-        
-        groupOrder.forEach(groupName => {
-          if (groups[groupName]) {
-            // 添加分组标题（保持原逻辑）
-            const sectionRow = document.createElement('tr');
-            sectionRow.className = 'section-row';
-            sectionRow.innerHTML = `<td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #475569; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>${groupName}</i></td>`;
-            tbody.appendChild(sectionRow);
-            
-            // 添加排序后的行（保持交替行背景色）
-            groups[groupName].forEach((row, index) => {
-              row.classList.add('data-row'); // 确保排序后仍有悬停效果
-              if (index % 2 === 0) {
-                row.style.backgroundColor = 'white';
-              } else {
-                row.style.backgroundColor = '#fefefe';
-              }
-              tbody.appendChild(row);
-            });
-          }
-        });
-      }
-      
-      // 页面加载完成后初始化
-      document.addEventListener('DOMContentLoaded', initSorting);
-      
-      // 如果DOMContentLoaded已经触发，直接初始化
+
+      // 初始化
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSorting);
       } else {
         initSorting();
       }
+    })();
+
+    (function setupExpandableRows(root = document) {
+      const container = root.getElementById('result-table') || root;
+
+      function toggleAll(opening) {
+        root.querySelectorAll('tr.expandable[data-detail]').forEach(tr => {
+          const details = root.getElementById(tr.dataset.detail);
+          const arrow = tr.querySelector('.arrow');
+          if (details) details.style.display = opening ? '' : 'none';
+          tr.classList.toggle('open', opening);
+          if (arrow) arrow.textContent = opening ? '▾' : '▸';
+        });
+      }
+
+      function toggleRow(tr) {
+        const detailId = tr.dataset.detail;
+        if (!detailId) return;
+        const details = root.getElementById(detailId);
+        if (!details) return;
+
+        const opening = details.style.display === 'none'; // 当前是否是“要打开”的状态
+        // ✅ 改成统一切换所有行
+        toggleAll(opening);
+      }
+
+      // 初始化：默认展开
+      root.querySelectorAll('tr.expandable[data-detail]').forEach(tr => {
+        const details = root.getElementById(tr.dataset.detail);
+        const arrow = tr.querySelector('.arrow');
+        if (details) details.style.display = ''; // 展开状态
+        tr.classList.add('open');
+        if (arrow) arrow.textContent = '▾';
+      });
+
+      // 点击事件（事件代理）
+      container.addEventListener('click', function (evt) {
+        const a = evt.target.closest('a');
+        if (a) return; // 点链接不触发展开
+        const arrow = evt.target.closest('.arrow');
+        const tr = evt.target.closest('tr.expandable[data-detail]');
+        if (!tr) return;
+        if (arrow) evt.stopPropagation();
+        toggleRow(tr);
+      });
     })();
     </script>
 
