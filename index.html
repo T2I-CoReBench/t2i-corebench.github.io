@@ -691,6 +691,32 @@
         transform: scale(1.02); position: relative; z-index: 10;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #f8fafc;
       }
+
+      #result-table {
+        width: 100%;
+      }
+      #benchmarkTable .score-open-best {
+        color: #F88825;
+        font-weight: 700;
+      }
+      #benchmarkTable .score-open-second {
+        color: #F88825;
+        text-decoration: underline;
+      }
+      #benchmarkTable .score-open-accent {
+        color: #F88825;
+      }
+      #benchmarkTable .score-closed-best {
+        color: #319B62;
+        font-weight: 700;
+      }
+      #benchmarkTable .score-closed-second {
+        color: #319B62;
+        text-decoration: underline;
+      }
+      #benchmarkTable .score-closed-accent {
+        color: #319B62;
+      }
     </style>
 
     <style>
@@ -712,9 +738,48 @@
         border-radius: 4px;
       }
       .arrow:hover { background: rgba(0,0,0,0.05); }
+
+      /* 让重写结果一眼可见，且不改动现有 DOM */
+      #benchmarkTable tr.rewrite-row {
+        background: #e3f2ff !important;
+        box-shadow: inset 3px 0 0 #3b82f6;
+        font-size: 0.95em;
+      }
+      #benchmarkTable tr.rewrite-row td {
+        color: #0f172a !important;
+        font-weight: 600;
+      }
+      #benchmarkTable tr.rewrite-row td.model {
+        background: rgba(59, 130, 246, 0.12) !important;
+        border-left: 3px solid #2563eb !important;
+      }
+      #benchmarkTable tr.rewrite-row td.mean-col span:last-child {
+        display: inline-block;
+        margin-left: 6px;
+        padding: 1px 6px;
+        border-radius: 999px;
+        background: #fee2e2;
+        color: #F44336 !important;
+        font-weight: 700;
+      }
+      #benchmarkTable tr.rewrite-row td.mean-col span:first-child {
+        color: #1d4ed8 !important;
+        font-weight: 700;
+        text-shadow: 0 0 6px rgba(59, 130, 246, 0.35);
+      }
+      #benchmarkTable tr.rewrite-row td.mean-col {
+        background: rgba(59, 130, 246, 0.1) !important;
+        color: #1d4ed8 !important;
+      }
+      #benchmarkTable tr.rewrite-row td.overall-col {
+        background: rgba(59, 130, 246, 0.12) !important;
+        color: #1d4ed8 !important;
+        border-left: 1px solid #93c5fd;
+      }
     </style>
 
-    <table border="1" cellspacing="0" cellpadding="4" id="benchmarkTable">
+    <div id="result-table">
+      <table border="1" cellspacing="0" cellpadding="4" id="benchmarkTable">
 
       <thead>
         <tr>
@@ -758,7 +823,7 @@
 
         <!-- <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev" target="_blank">FLUX.1-Krea-dev</a></td><td style="color:#F88825; text-decoration:underline;">70.7</td><td style="color:#F88825; text-decoration:underline;">71.1</td><td style="color:#F88825; text-decoration:underline;">53.2</td><td>28.9</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825; text-decoration:underline;">26.1</td><td style="color:#F88825; text-decoration:underline;">44.5</td><td style="color:#F88825; text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825; text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td class="mean-col" style="color:#F88825; text-decoration:underline; font-weight:700;">44.3</td><td class="overall-col" style="color:#F88825; text-decoration:underline; font-weight:700;">48.2</td></tr> -->
         <tr data-group="Diffusion Models" class="data-row expandable" data-detail="flux-krea-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev" target="_blank">FLUX.1-Krea-dev</a></td><td style="color:#F88825;text-decoration:underline;">70.7</td><td style="color:#F88825;text-decoration:underline;">71.1</td><td style="color:#F88825;text-decoration:underline;">53.2</td><td>28.9</td><td class="mean-col" style="color:#F88825;text-decoration:underline;font-weight:700;">56.0</td><td>30.3</td><td style="color:#F88825;text-decoration:underline;">26.1</td><td style="color:#F88825;text-decoration:underline;">44.5</td><td style="color:#F88825;text-decoration:underline;">70.6</td><td>50.5</td><td style="color:#F88825;text-decoration:underline;">57.5</td><td>46.3</td><td>28.7</td><td class="mean-col" style="color:#F88825;text-decoration:underline;font-weight:700;">44.3</td><td class="overall-col" style="color:#F88825;text-decoration:underline;font-weight:700;">48.2</td></tr>
-        <tr id="flux-krea-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">64.9</td><td style="color:#777;">49.8</td><td style="color:#777;">54.9</td><td style="color:#777;">77.9</td><td style="color:#777;">74.6</td><td style="color:#777;">71.1</td><td style="color:#777;">61.5</td><td style="color:#777;">69.2</td><td class="mean-col"><span style="color:#777;">65.5</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑21.2</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+        <tr id="flux-krea-rewrite" class="rewrite-row" style="display:none;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">64.9</td><td style="color:#777;">49.8</td><td style="color:#777;">54.9</td><td style="color:#777;">77.9</td><td style="color:#777;">74.6</td><td style="color:#777;">71.1</td><td style="color:#777;">61.5</td><td style="color:#777;">69.2</td><td class="mean-col"><span style="color:#777;">65.5</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑21.2</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
         <tr data-group="Diffusion Models" class="data-row"><td class="model"><a href="https://huggingface.co/PixArt-alpha/PixArt-XL-2-1024-MS" target="_blank">PixArt-α</a></td><td>40.2</td><td>42.2</td><td>14.2</td><td>3.3</td><td class="mean-col">25.0</td><td>11.6</td><td>11.6</td><td>21.1</td><td>30.4</td><td>22.6</td><td>44.4</td><td>26.7</td><td>20.9</td><td class="mean-col">23.7</td><td class="overall-col">24.1</td></tr>
         <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS" target="_blank">PixArt-Σ</a></td><td>47.2</td><td>49.7</td><td>23.8</td><td>2.8</td><td class="mean-col">30.9</td><td>14.7</td><td>18.3</td><td>26.7</td><td>39.2</td><td>25.7</td><td>44.9</td><td>33.9</td><td>24.3</td><td class="mean-col">28.5</td><td class="overall-col">29.3</td></tr>
@@ -766,7 +831,7 @@
 
         <!-- <tr data-group="Diffusion Models" class="data-row" style="background-color: #fefefe;"><td class="model"><a href="https://huggingface.co/Qwen/Qwen-Image" target="_blank">Qwen-Image</a></td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td class="mean-col" style="color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td class="mean-col" style="color:#F88825; font-weight:bold;">49.3</td><td class="overall-col" style="color:#F88825; font-weight:bold;">58.9</td></tr> -->
         <tr data-group="Diffusion Models" class="data-row expandable" data-detail="qwen-image-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://huggingface.co/Qwen/Qwen-Image" target="_blank">Qwen-Image</a></td><td style="color:#F88825; font-weight:bold;">81.4</td><td style="color:#F88825; font-weight:bold;">79.6</td><td style="color:#F88825; font-weight:bold;">65.6</td><td style="color:#F88825; font-weight:bold;">85.5</td><td class="mean-col" style="color:#F88825; font-weight:bold;">78.0</td><td style="color:#F88825; font-weight:bold;">41.1</td><td style="color:#F88825; font-weight:bold;">32.2</td><td style="color:#F88825; font-weight:bold;">48.2</td><td style="color:#F88825; font-weight:bold;">75.1</td><td style="color:#F88825; font-weight:bold;">56.5</td><td>53.3</td><td style="color:#F88825; font-weight:bold;">61.9</td><td>26.4</td><td class="mean-col" style="color:#F88825; font-weight:bold;">49.3</td><td class="overall-col" style="color:#F88825; font-weight:bold;">58.9</td></tr>
-        <tr id="qwen-image-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.1</td><td style="color:#777;">59.6</td><td style="color:#777;">64.2</td><td style="color:#777;">84.6</td><td style="color:#777;">80.3</td><td style="color:#777;">71.7</td><td style="color:#777;">71.9</td><td style="color:#777;">64.5</td><td class="mean-col"><span style="color:#777;">72.7</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑23.4</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+        <tr id="qwen-image-rewrite" class="rewrite-row" style="display:none;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.1</td><td style="color:#777;">59.6</td><td style="color:#777;">64.2</td><td style="color:#777;">84.6</td><td style="color:#777;">80.3</td><td style="color:#777;">71.7</td><td style="color:#777;">71.9</td><td style="color:#777;">64.5</td><td class="mean-col"><span style="color:#777;">72.7</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑23.4</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
         <!-- Autoregressive Models -->
         <tr class="section-row"><td colspan="16" style="font-weight:700; text-align:center; background: #fafafa; color: #1e293b; font-size: 14px; padding: 12px; border-top: 1px solid #cbd5e1;"><i>Autoregressive Models</i></td></tr>
@@ -796,7 +861,7 @@
 
         <!-- <tr data-group="Closed-Source Models" class="data-row" style="background-color:#fefefe;"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash#image" target="_blank">Nano Banana</a></td><td>85.7</td><td>77.9</td><td>72.6</td><td>86.3</td><td class="mean-col">80.6</td><td style="color:#319B62; text-decoration:underline;">64.5</td><td style="color:#319B62; font-weight:bold;">64.9</td><td style="color:#319B62; font-weight:bold;">67.1</td><td>85.2</td><td style="color:#319B62; text-decoration:underline;">84.1</td><td style="color:#319B62; font-weight:bold;">83.1</td><td>71.3</td><td style="color:#319B62; font-weight:bold;">68.7</td><td class="mean-col" style="color:#319B62; font-weight:bold;">73.6</td><td class="overall-col" style="color:#319B62; text-decoration:underline;">75.9</td></tr> -->
         <tr data-group="Closed-Source Models" class="data-row expandable" data-detail="nano-banana-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash#image" target="_blank">Nano Banana</a></td><td>85.7</td><td>77.9</td><td>72.6</td><td>86.3</td><td class="mean-col">80.6</td><td style="color:#319B62; text-decoration:underline;">64.5</td><td style="color:#319B62; font-weight:bold;">64.9</td><td style="color:#319B62; font-weight:bold;">67.1</td><td>85.2</td><td style="color:#319B62; text-decoration:underline;">84.1</td><td style="color:#319B62; font-weight:bold;">83.1</td><td>71.3</td><td style="color:#319B62; font-weight:bold;">68.7</td><td class="mean-col" style="color:#319B62; font-weight:bold;">73.6</td><td class="overall-col" style="color:#319B62; text-decoration:underline;">75.9</td></tr>
-        <tr id="nano-banana-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">86.5</td><td style="color:#777;">67.7</td><td style="color:#777;">73.7</td><td style="color:#777;">88.8</td><td style="color:#777;">83.2</td><td style="color:#777;">81.4</td><td style="color:#777;">72.4</td><td style="color:#777;">72.1</td><td class="mean-col"><span style="color:#777;">78.2</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑4.6</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+        <tr id="nano-banana-rewrite" class="rewrite-row" style="display:none;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">86.5</td><td style="color:#777;">67.7</td><td style="color:#777;">73.7</td><td style="color:#777;">88.8</td><td style="color:#777;">83.2</td><td style="color:#777;">81.4</td><td style="color:#777;">72.4</td><td style="color:#777;">72.1</td><td class="mean-col"><span style="color:#777;">78.2</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑4.6</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
 
         <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate-001" target="_blank">Imagen 4</a></td><td>82.8</td><td>74.3</td><td>66.3</td><td style="color:#319B62; text-decoration:underline;">90.2</td><td class="mean-col">78.4</td><td>44.5</td><td>51.8</td><td>56.8</td><td>82.8</td><td>79.5</td><td>73.3</td><td style="color:#319B62; text-decoration:underline;">72.8</td><td style="color:#319B62; text-decoration:underline;">65.3</td><td class="mean-col">65.9</td><td class="overall-col">70.0</td></tr>
@@ -805,20 +870,20 @@
 
         <!-- <tr data-group="Closed-Source Models" class="data-row"><td class="model"><a href="https://platform.openai.com/docs/models/gpt-image-1" target="_blank">GPT-Image</a></td><td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td class="mean-col">79.8</td><td>59.0</td><td>54.8</td><td>65.6</td><td style="color:#319B62; text-decoration:underline;">87.3</td><td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td><td class="mean-col">69.0</td><td class="overall-col">72.6</td></tr> -->
         <tr data-group="Closed-Source Models" class="data-row expandable" data-detail="gpt-image-rewrite" style="background-color:#fefefe;"><td class="model"><span class="arrow">▸</span><a href="https://platform.openai.com/docs/models/gpt-image-1" target="_blank">GPT-Image</a></td><td>84.1</td><td>75.9</td><td>72.7</td><td>86.4</td><td class="mean-col">79.8</td><td>59.0</td><td>54.8</td><td>65.6</td><td style="color:#319B62; text-decoration:underline;">87.3</td><td>76.5</td><td>82.0</td><td>70.9</td><td>56.1</td><td class="mean-col">69.0</td><td class="overall-col">72.6</td></tr>
-        <tr id="gpt-image-rewrite" style="display:none; background:#fafafa; font-size:0.95em;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.2</td><td style="color:#777;">71.0</td><td style="color:#777;">78.8</td><td style="color:#777;">87.1</td><td style="color:#777;">82.2</td><td style="color:#777;">85.9</td><td style="color:#777;">75.1</td><td style="color:#777;">73.9</td><td class="mean-col"><span style="color:#777;">79.9</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑10.9</span></td><td class="overall-col" style="color:#777;">-</td></tr>
+        <tr id="gpt-image-rewrite" class="rewrite-row" style="display:none;"><td class="model" style="color:#707070; border-left:3px solid #ddd; padding-left:1.5em;">+ Prompt Rewriting</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td style="color:#777;">-</td><td class="mean-col" style="color:#777;">-</td><td style="color:#777;">85.2</td><td style="color:#777;">71.0</td><td style="color:#777;">78.8</td><td style="color:#777;">87.1</td><td style="color:#777;">82.2</td><td style="color:#777;">85.9</td><td style="color:#777;">75.1</td><td style="color:#777;">73.9</td><td class="mean-col"><span style="color:#777;">79.9</span><span style="color:#F44336; font-size:0.85em; vertical-align:baseline; margin-left:2px;">↑10.9</span></td><td class="overall-col" style="color:#777;">-</td></tr>
 
       </tbody>
 
     </table>
+    </div>
 
-<p id="legend" class="subtle" style="text-align:justify; font-size:16px; line-height:1.6;">
+<p id="leaderboard-note" class="subtle" style="text-align:justify; font-size:16px; line-height:1.6;">
   <strong>Main results on our <span style="font-variant:small-caps;">T2I-CoReBench</span></strong> assessing both <em>composition</em> and <em>reasoning</em> capabilities evaluated by Gemini 2.5 Flash. 
-  <span style="background: #e5e7eb; padding: 2px 6px; border-radius: 3px; font-weight: 600; color: #374151;">Mean</span> denotes the mean score for each capability. 
-  The best and second-best results are marked in <strong>bold</strong> and <u>underline</u> for 
+  <strong>(1)</strong> <span style="background: #e5e7eb; padding: 1px 3px; border-radius: 3px; font-weight: 600; color: #374151;">Mean</span> denotes the mean score for each capability, and <span style="background: #fef3c7; padding: 1px 3px; border-radius: 3px; font-weight: 600; color: #92400e;">Overall</span> summarizes the aggregated score across all dimensions. 
+  <strong>(2)</strong> The best and second-best results are marked in <strong>bold</strong> and <u>underline</u> for 
   <span style="color: #ea580c; font-weight: 600;">open-</span> and <span style="color: #059669; font-weight: 600;">closed-</span>models, respectively.
-  <em>Prompt Rewriting</em> refers to rewriting the original prompt with OpenAI o3 before generation.
+  <strong>(3)</strong> Rows highlighted in <span style="color: #1d4ed8; font-weight: 600;">blue</span> show the effect of <em>Prompt Rewriting</em> with OpenAI o3. Considering most closed-source systems enable it by default, we also report open-source models under the same setting for a fair comparison.
 </p>
-
 
     <script>
     (function () {
@@ -965,47 +1030,126 @@
 
     (function setupExpandableRows(root = document) {
       const container = root.getElementById('result-table') || root;
+      let allOpen = true;
+
+      function setRowState(tr, details, opening) {
+        if (!tr || !details) return;
+        details.style.display = opening ? '' : 'none';
+        tr.classList.toggle('open', opening);
+        const arrow = tr.querySelector('.arrow');
+        if (arrow) arrow.textContent = opening ? '▾' : '▸';
+        tr.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        details.setAttribute('aria-hidden', opening ? 'false' : 'true');
+      }
 
       function toggleAll(opening) {
         root.querySelectorAll('tr.expandable[data-detail]').forEach(tr => {
           const details = root.getElementById(tr.dataset.detail);
-          const arrow = tr.querySelector('.arrow');
-          if (details) details.style.display = opening ? '' : 'none';
-          tr.classList.toggle('open', opening);
-          if (arrow) arrow.textContent = opening ? '▾' : '▸';
+          setRowState(tr, details, opening);
         });
+        allOpen = opening;
       }
 
       function toggleRow(tr) {
-        const detailId = tr.dataset.detail;
-        if (!detailId) return;
-        const details = root.getElementById(detailId);
-        if (!details) return;
-
-        const opening = details.style.display === 'none'; // 当前是否是“要打开”的状态
-        // ✅ 改成统一切换所有行
-        toggleAll(opening);
+        if (!tr) return;
+        toggleAll(!allOpen);
       }
 
       // 初始化：默认展开
       root.querySelectorAll('tr.expandable[data-detail]').forEach(tr => {
-        const details = root.getElementById(tr.dataset.detail);
-        const arrow = tr.querySelector('.arrow');
-        if (details) details.style.display = ''; // 展开状态
-        tr.classList.add('open');
-        if (arrow) arrow.textContent = '▾';
+        const detailId = tr.dataset.detail;
+        const details = root.getElementById(detailId);
+        if (!details) return;
+        tr.setAttribute('aria-controls', detailId);
+        details.setAttribute('role', 'row');
+        setRowState(tr, details, true);
       });
+      allOpen = true;
 
       // 点击事件（事件代理）
       container.addEventListener('click', function (evt) {
         const a = evt.target.closest('a');
         if (a) return; // 点链接不触发展开
-        const arrow = evt.target.closest('.arrow');
         const tr = evt.target.closest('tr.expandable[data-detail]');
         if (!tr) return;
+        const arrow = evt.target.closest('.arrow');
         if (arrow) evt.stopPropagation();
         toggleRow(tr);
       });
+    })();
+
+    (function applyScoreAccents(root = document) {
+      const table = root.getElementById('benchmarkTable');
+      if (!table) return;
+
+      const accentTokens = ['#f88825', '#319b62'];
+      const removableProps = ['color', 'font-weight', 'text-decoration'];
+      const scoreClasses = [
+        'score-open-best', 'score-open-second', 'score-open-accent',
+        'score-closed-best', 'score-closed-second', 'score-closed-accent'
+      ];
+
+      function cleanInlineStyle(node) {
+        const inline = node.getAttribute('style');
+        if (!inline) return;
+        const cleaned = inline
+          .split(';')
+          .map(part => part.trim())
+          .filter(part => {
+            if (!part) return false;
+            const lower = part.toLowerCase();
+            return !removableProps.some(prop => lower.startsWith(prop + ':'));
+          });
+        if (cleaned.length) node.setAttribute('style', cleaned.join('; '));
+        else node.removeAttribute('style');
+      }
+
+      // 移除遗留的内联配色
+      table.querySelectorAll('td[style], th[style]').forEach(node => {
+        const inline = node.getAttribute('style');
+        if (!inline) return;
+        if (node.classList.contains('mean-col') || node.classList.contains('overall-col')) return;
+        const lower = inline.toLowerCase();
+        if (!accentTokens.some(token => lower.includes(token))) return;
+        cleanInlineStyle(node);
+      });
+
+      const selector = scoreClasses.map(cls => `.${cls}`).join(',');
+      if (selector) {
+        table.querySelectorAll(selector).forEach(node => node.classList.remove(...scoreClasses));
+      }
+
+      const rows = Array.from(table.querySelectorAll('tbody tr.data-row'));
+      const columnCount = rows[0]?.cells.length || 0;
+
+      function getTier(row) {
+        if (row.dataset.tier) return row.dataset.tier;
+        return row.dataset.group === 'Closed-Source Models' ? 'closed' : 'open';
+      }
+
+      for (let col = 1; col < columnCount; col++) {
+        const bucket = { open: [], closed: [] };
+        rows.forEach(row => {
+          const cell = row.cells[col];
+          if (!cell) return;
+          const value = parseFloat(cell.textContent);
+          if (Number.isNaN(value)) return;
+          const tier = getTier(row);
+          if (!bucket[tier]) return;
+          bucket[tier].push({ cell, value });
+        });
+
+        Object.entries(bucket).forEach(([tier, items]) => {
+          if (!items.length) return;
+          items.sort((a, b) => b.value - a.value);
+          const bestValue = items[0].value;
+          const second = items.find(item => item.value < bestValue);
+          items.forEach(item => {
+            if (item.value === bestValue) item.cell.classList.add(`score-${tier}-best`);
+            else if (second && item.value === second.value) item.cell.classList.add(`score-${tier}-second`);
+          });
+        });
+      }
     })();
     </script>
 
