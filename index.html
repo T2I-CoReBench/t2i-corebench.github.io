@@ -649,7 +649,7 @@
       }
       #benchmarkTable thead { background: #f8fafc; }
       /* Widen the leaderboard container and figure so the table isn't constrained */
-      #leaderboard .container.is-max-desktop { max-width: none; width: 80%; }
+      #leaderboard .container.is-max-desktop { max-width: none; width: 85%; }
       #leaderboard figure { display: block; width: 100%; }
       /* Keep the 2-level header visible while scrolling */
       #benchmarkTable thead th {
@@ -724,10 +724,25 @@
         letter-spacing: 0.5px;
         padding: 12px 8px;
       }
+      #benchmarkTable th.th-params {
+        min-width: 80px;
+        color: #000;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        padding: 12px 8px;
+      }
       #benchmarkTable td.release-date {
         min-width: 88px;
         color: #000;
         font-weight: 400;
+        text-decoration: none;
+        font-size: 13px;
+      }
+      #benchmarkTable td.params-col {
+        min-width: 80px;
+        color: #111827;
+        font-weight: 500;
         text-decoration: none;
         font-size: 13px;
       }
@@ -925,28 +940,32 @@
             Release Date
             <span class="sort-indicator" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span>
           </th>
+          <th rowspan="2" data-column="2" class="sortable th-params">
+            #Params
+            <span class="sort-indicator" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span>
+          </th>
           <th colspan="5" class="group-head group-comp"><i><b>Composition</b></i></th>
           <th colspan="9" class="group-head group-reas"><i><b>Reasoning</b></i></th>
-          <th rowspan="2" data-column="16" class="sortable overall-col">
+          <th rowspan="2" data-column="17" class="sortable overall-col">
             Overall
             <span class="sort-indicator" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span>
           </th>
         </tr>
         <tr>
-          <th data-column="2" class="sortable subhead">MI <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="3" class="sortable subhead">MA <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="4" class="sortable subhead">MR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="5" class="sortable subhead border-light">TR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="6" class="sortable subhead mean-col border-light">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="7" class="sortable subhead">LR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="8" class="sortable subhead">BR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="9" class="sortable subhead">HR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="10" class="sortable subhead">PR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="11" class="sortable subhead">GR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="12" class="sortable subhead">AR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="13" class="sortable subhead">CR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="14" class="sortable subhead border-light">RR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
-          <th data-column="15" class="sortable subhead mean-col mean-reason">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="3" class="sortable subhead">MI <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="4" class="sortable subhead">MA <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="5" class="sortable subhead">MR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="6" class="sortable subhead border-light">TR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="7" class="sortable subhead mean-col border-light">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="8" class="sortable subhead">LR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="9" class="sortable subhead">BR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="10" class="sortable subhead">HR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="11" class="sortable subhead">PR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="12" class="sortable subhead">GR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="13" class="sortable subhead">AR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="14" class="sortable subhead">CR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="15" class="sortable subhead border-light">RR <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
+          <th data-column="16" class="sortable subhead mean-col mean-reason">Mean <span class="sort-indicator" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); opacity: 0.3;">↕</span></th>
         </tr>
       </thead>
 
@@ -1196,6 +1215,113 @@
       root.updateStickyHeaderOffset = requestMeasure;
     })();
 
+    (function setupParamsColumn(root = document) {
+      const PARAMS_MAP = {
+        'SD-3-Medium': '2B',
+        'SD-3.5-Medium': '2B',
+        'SD-3.5-Large': '8B',
+        'FLUX.1-schnell': '12B',
+        'FLUX.1-dev': '12B',
+        'FLUX.1-Krea-dev': '12B',
+        'FLUX.2-dev': '32B',
+        'PixArt-α': '0.6B',
+        'PixArt-Σ': '0.6B',
+        'HiDream-I1': '17B',
+        'Qwen-Image': '20B',
+        'HunyuanImage-3.0': '80B',
+        'Z-Image-Turbo': '6B',
+        'LongCat-Image': '6B',
+        'Infinity-8B': '8B',
+        'GoT-R1-7B': '7B',
+        'BAGEL': '14B',
+        'BAGEL w/ Think': '14B',
+        'show-o2-1.5B': '1.5B',
+        'show-o2-7B': '7B',
+        'Janus-Pro-1B': '1B',
+        'Janus-Pro-7B': '7B',
+        'BLIP3o-4B': '4B',
+        'BLIP3o-8B': '8B',
+        'OmniGen2-7B': '7B',
+        'Seedream 3.0': '-',
+        'Seedream 4.0': '-',
+        'Gemini 2.0 Flash': '-',
+        'Nano Banana': '-',
+        'Nano Banana Pro': '-',
+        'Imagen 4': '-',
+        'Imagen 4 Ultra': '-',
+        'GPT-Image': '-'
+      };
+
+      const $$ = (sel, ctx = root) => Array.from(ctx.querySelectorAll(sel));
+
+      function getModelName(row) {
+        const link = row.querySelector('td.model a');
+        if (link) return link.textContent.trim();
+        const cell = row.querySelector('td.model');
+        let name = cell ? cell.textContent.trim() : '';
+        name = name.replace('+ Prompt Rewriting', '').trim();
+        if (!name && row.id) {
+          const main = row.parentElement?.querySelector(`tr[data-detail="${row.id}"]`);
+          if (main) return getModelName(main);
+        }
+        return name;
+      }
+
+      function injectParamCell(row) {
+        if (row.classList.contains('section-row')) return;
+        const releaseCell = row.querySelector('td.release-date');
+        if (!releaseCell || row.querySelector('td.params-col')) return;
+        const modelName = getModelName(row);
+        const value = row.classList.contains('rewrite-row') ? '-' : (PARAMS_MAP[modelName] || '-');
+        const td = document.createElement('td');
+        td.className = 'params-col';
+        td.textContent = value;
+        releaseCell.insertAdjacentElement('afterend', td);
+      }
+
+      function applyToBody(tbody) {
+        if (!tbody) return;
+        Array.from(tbody.rows).forEach(injectParamCell);
+      }
+
+      function getColumnCount(table) {
+        if (!table) return 0;
+        const headerRows = Array.from(table.tHead?.rows || []);
+        if (headerRows.length) {
+          const maxHeaderCols = headerRows.reduce((max, row) => {
+            const count = Array.from(row.cells).reduce((sum, cell) => {
+              const span = parseInt(cell.colSpan, 10);
+              return sum + (Number.isFinite(span) && span > 0 ? span : 1);
+            }, 0);
+            return Math.max(max, count);
+          }, 0);
+          if (maxHeaderCols) return maxHeaderCols;
+        }
+        const dataRow = Array.from(table.tBodies?.[0]?.rows || []).find(r => (r.cells?.length || 0) > 1);
+        return dataRow ? dataRow.cells.length : 0;
+      }
+
+      function syncSectionColspan(table) {
+        if (!table) return;
+        const cols = getColumnCount(table);
+        if (!cols) return;
+        $$('tr.section-row td', table).forEach(td => { td.colSpan = cols; });
+      }
+
+      function ensureParamsColumn(ctx = root) {
+        const table = ctx.getElementById ? ctx.getElementById('benchmarkTable') : null;
+        if (!table) return;
+        applyToBody(table.tBodies[0]);
+        syncSectionColspan(table);
+      }
+
+      root.ensureParamsColumn = ensureParamsColumn;
+      root.injectParamsIntoBody = applyToBody;
+      root.syncSectionColspan = syncSectionColspan;
+
+      ensureParamsColumn(root);
+    })();
+
     (function () {
       let currentSortColumn = -1;
       let isAscending = true;
@@ -1276,7 +1402,7 @@
         tbody.appendChild(fragAll);
       }
 
-      // 比较逻辑：第 0 列按文本，第 1 列按日期（同日再比名称），其它列按数字（NaN 置后）
+      // 比较逻辑：第 0 列按文本，第 1 列按日期（同日再比名称），第 2 列按参数量，其它列按数字（NaN 置后）
       function sortMainRows(mainRows, column) {
         const arr = mainRows.slice();
         const compareNames = (rowA, rowB) =>
@@ -1288,6 +1414,11 @@
           const month = parseInt(m[2], 10);
           if (month < 1 || month > 12) return NaN;
           return year * 100 + month;
+        };
+        const parseParams = (str) => {
+          if (!str || str === '-') return NaN;
+          const m = /([\d.]+)/.exec(str);
+          return m ? parseFloat(m[1]) : NaN;
         };
 
         arr.sort((a, b) => {
@@ -1301,6 +1432,16 @@
             const bn = parseReleaseDate(bv);
             let res;
             if (Number.isNaN(an) && Number.isNaN(bn)) res = compareNames(a, b);
+            else if (Number.isNaN(an)) res = 1;
+            else if (Number.isNaN(bn)) res = -1;
+            else res = an - bn;
+            if (res === 0) res = compareNames(a, b);
+            return isAscending ? res : -res;
+          } else if (column === 2) {
+            const an = parseParams(av);
+            const bn = parseParams(bv);
+            let res;
+            if (Number.isNaN(an) && Number.isNaN(bn)) res = 0;
             else if (Number.isNaN(an)) res = 1;
             else if (Number.isNaN(bn)) res = -1;
             else res = an - bn;
@@ -1517,6 +1658,7 @@
         const html = datasets[key];
         if (!html) return;
         tableBody.innerHTML = html;
+        if (typeof root.ensureParamsColumn === 'function') root.ensureParamsColumn(root);
         if (typeof root.forceAllExpandable === 'function') root.forceAllExpandable(true);
         if (typeof root.applyScoreAccents === 'function') root.applyScoreAccents(root);
         if (typeof root.updateStickyHeaderOffset === 'function') root.updateStickyHeaderOffset();
