@@ -920,10 +920,10 @@
     <div id="evaluatorControl">
       <span class="label">Evaluator:</span>
       <div class="evaluator-options">
-        <button class="evaluator-btn active" data-evaluator="gemini-2-5-flash" aria-pressed="true">Gemini 2.5 Flash</button>
-        <button class="evaluator-btn" data-evaluator="qwen3-vl-32b-thinking" aria-pressed="false">Qwen3-VL-32B-Thinking</button>
-        <button class="evaluator-btn" data-evaluator="qwen3-vl-30b-a3b-thinking" aria-pressed="false">Qwen3-VL-30B-A3B-Thinking</button>
-        <button class="evaluator-btn" data-evaluator="qwen2-5-vl-72b" aria-pressed="false">Qwen2.5-VL-72B</button>
+        <button class="evaluator-btn active" data-evaluator="gemini-2-5-flash" data-rewrite="true" aria-pressed="true">Gemini 2.5 Flash</button>
+        <button class="evaluator-btn" data-evaluator="qwen3-vl-32b-thinking" data-rewrite="false" aria-pressed="false">Qwen3-VL-32B-Thinking</button>
+        <button class="evaluator-btn" data-evaluator="qwen3-vl-30b-a3b-thinking" data-rewrite="false" aria-pressed="false">Qwen3-VL-30B-A3B-Thinking</button>
+        <button class="evaluator-btn" data-evaluator="qwen2-5-vl-72b" data-rewrite="false" aria-pressed="false">Qwen2.5-VL-72B</button>
       </div>
     </div>
 
@@ -1188,7 +1188,7 @@
   <span style="background: #e5e7eb; padding: 1px 3px; border-radius: 3px; font-weight: 600; color: #374151;">Mean</span> denotes the mean score for each capability, and <span style="background: #fef3c7; padding: 1px 3px; border-radius: 3px; font-weight: 600; color: #92400e;">Overall</span> summarizes the aggregated score across all dimensions. 
   The best and second-best results are marked in <strong>bold</strong> and <u>underline</u> for 
   <span style="color: #ea580c; font-weight: 600;">open-</span> and <span style="color: #059669; font-weight: 600;">closed-</span>models, respectively.
-  Since most closed-source models enable <em>Prompt Rewriting</em> by default, we also compare the results with <em>Prompt Rewriting</em> enabled (<span style="color: #1d4ed8; font-weight: 600;">blue rows</span>, rewritten using OpenAI o3) to ensure a fair comparison between open- and closed-models
+  <span id="rewriteCaption">Since most closed-source models enable <em>Prompt Rewriting</em> by default, we also compare the results with <em>Prompt Rewriting</em> enabled (<span style="color: #1d4ed8; font-weight: 600;">blue rows</span>, rewritten using OpenAI o3) to ensure a fair comparison between open- and closed-models.</span>
 </p>
 
     <script>
@@ -1636,6 +1636,7 @@
       const tableBody = root.getElementById('tableBody');
       const buttons = Array.from(root.querySelectorAll('.evaluator-btn[data-evaluator]'));
       const caption = root.getElementById('evaluatorCaption');
+      const rewriteCaption = root.getElementById('rewriteCaption');
       if (!tableBody || !buttons.length) return;
 
       const initialHTML = tableBody.innerHTML;
@@ -1672,6 +1673,10 @@
         });
         refreshEvaluator(button.dataset.evaluator);
         if (caption) caption.textContent = button.textContent.trim();
+        if (rewriteCaption) {
+          const showRewriteNote = button.dataset.rewrite === 'true';
+          rewriteCaption.style.display = showRewriteNote ? '' : 'none';
+        }
       }
 
       buttons.forEach(btn => {
