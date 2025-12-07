@@ -650,7 +650,19 @@
       #benchmarkTable thead { background: #f8fafc; }
       /* Widen the leaderboard container and figure so the table isn't constrained */
       #leaderboard .container.is-max-desktop { max-width: none; width: 85%; }
+      #leaderboard-visualization .container.is-max-desktop { max-width: none; width: 85%; }
       #leaderboard figure { display: block; width: 100%; }
+      /* Normalize section title spacing */
+      .section .title.is-3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+      }
+      .section .title.is-3 + * {
+        margin-top: 0 !important;
+      }
+      #leaderboard-visualization .title.is-3 {
+        margin-bottom: 2rem;
+      }
       /* Keep the 2-level header visible while scrolling */
       #benchmarkTable thead th {
         position: sticky;
@@ -682,6 +694,10 @@
       #benchmarkTable td {
         padding: 8px 6px;      /* 单元格内边距，保证内容不拥挤 */
         line-height: 1.5;      /* 行距稍大，提高文字可读性 */
+      }
+      #benchmarkTable tbody tr.data-row td {
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
 
       /* 可排序的表头样式：增加过渡效果（背景色和位移） */
@@ -777,7 +793,7 @@
       #result-table {
         width: 100%;
       }
-      #evaluatorControl {
+      .evaluator-control {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -785,7 +801,7 @@
         color: #1e293b;
         font-weight: 600;
       }
-      #evaluatorControl .label {
+      .evaluator-control .label {
         font-size: 18px;
         display: inline-flex;
         align-items: center;
@@ -856,6 +872,208 @@
       #benchmarkTable .score-closed-accent {
         color: #319B62;
       }
+
+      /* Visualization styles */
+      #score-visualization {
+        margin-top: 22px;
+        padding: 28px 24px 22px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 60%, #eef2ff 100%);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      }
+      #score-visualization .viz-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      #score-visualization .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #475569;
+        font-weight: 700;
+        font-size: 11px;
+      }
+      #score-visualization h3 {
+        margin: 4px 0 2px;
+        font-weight: 800;
+        font-size: 20px;
+        color: #0f172a;
+      }
+      #score-visualization .subnote {
+        color: #475569;
+        font-size: 13px;
+        margin: 0;
+        max-width: 720px;
+      }
+      .viz-legend {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .legend-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        font-weight: 700;
+        color: #0f172a;
+      }
+      .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+      .dimension-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 22px;
+      }
+      .control-row.dimension-row {
+        margin-top: 16px;
+      }
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .controls-inline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 175px;
+        align-items: center;
+      }
+      .dim-label {
+        font-weight: 800;
+        color: #0f172a;
+        font-size: 15px;
+      }
+      #dimensionChips,
+      #paradigmChips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .dim-chip,
+      .paradigm-chip {
+        padding: 7px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .dim-chip:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+      }
+      .dim-chip.active {
+        background: #1d4ed8;
+        color: #fff;
+        border-color: #1d4ed8;
+        box-shadow: 0 8px 16px rgba(30, 64, 175, 0.28);
+      }
+      .paradigm-chip {
+        --chip-color: #3b82f6;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .paradigm-chip:hover {
+        border-color: var(--chip-color);
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+      }
+      .paradigm-chip.active {
+        background: var(--chip-color);
+        color: #fff;
+        border-color: var(--chip-color);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+      }
+      #vizChartWrap {
+        position: relative;
+        width: 100%;
+        margin-top: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #scoreBubbleChart {
+        width: 100%;
+        max-width: 1400px;
+        height: auto;
+        display: block;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.08);
+        touch-action: none;
+        cursor: grab;
+        user-select: none;
+      }
+      #scoreBubbleChart.dragging {
+        cursor: grabbing;
+      }
+      #zoomSlider {
+        width: 220px;
+        accent-color: #1d4ed8;
+      }
+      #zoomValue {
+        font-weight: 800;
+        color: #0f172a;
+        min-width: 24px;
+        display: inline-block;
+        text-align: right;
+      }
+      .viz-tooltip {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.92);
+        color: #e5e7eb;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        pointer-events: none;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+        transform: translate(-50%, -120%);
+        white-space: nowrap;
+        z-index: 5;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      }
+      .viz-tooltip .tt-name {
+        display: block;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 13px;
+        margin-bottom: 2px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.65);
+      }
+      .viz-tooltip .tt-row {
+        display: block;
+        color: #e5e7eb;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .viz-empty {
+        text-align: center;
+        color: #475569;
+        padding: 20px 0;
+        font-weight: 700;
+      }
+      @media (max-width: 768px) {
+        #score-visualization { padding: 14px; }
+        #score-visualization .viz-head { flex-direction: column; align-items: flex-start; }
+      }
     </style>
 
     <style>
@@ -917,7 +1135,7 @@
       }
     </style>
 
-    <div id="evaluatorControl">
+    <div id="evaluatorControl" class="evaluator-control">
       <span class="label">Evaluator:</span>
       <div class="evaluator-options">
         <button class="evaluator-btn active" data-evaluator="gemini-2-5-flash" data-rewrite="true" aria-pressed="true">Gemini 2.5 Flash</button>
@@ -1190,6 +1408,49 @@
   <span style="color: #ea580c; font-weight: 600;">open-</span> and <span style="color: #059669; font-weight: 600;">closed-</span>models, respectively.
   <span id="rewriteCaption">Since most closed-source models enable <em>Prompt Rewriting</em> by default, we also compare the results with <em>Prompt Rewriting</em> enabled (<span style="color: #1d4ed8; font-weight: 600;">blue rows</span>, rewritten using OpenAI o3) to ensure a fair comparison between open- and closed-models.</span>
 </p>
+
+    </figure>
+  </div>
+</section>
+<!-- End Leaderboard -->
+
+
+<!-- Leaderboard Visualization -->
+<section id="leaderboard-visualization" class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">4. Performance Landscape</h2>
+
+    <div id="evaluatorControlViz" class="evaluator-control">
+      <span class="label">Evaluator:</span>
+      <div class="evaluator-options">
+        <button class="evaluator-btn active" data-evaluator="gemini-2-5-flash" data-rewrite="true" aria-pressed="true">Gemini 2.5 Flash</button>
+        <button class="evaluator-btn" data-evaluator="qwen3-vl-32b-thinking" data-rewrite="false" aria-pressed="false">Qwen3-VL-32B-Thinking</button>
+        <button class="evaluator-btn" data-evaluator="qwen3-vl-30b-a3b-thinking" data-rewrite="false" aria-pressed="false">Qwen3-VL-30B-A3B-Thinking</button>
+        <button class="evaluator-btn" data-evaluator="qwen2-5-vl-72b" data-rewrite="false" aria-pressed="false">Qwen2.5-VL-72B</button>
+      </div>
+    </div>
+
+    <div id="score-visualization">
+      <div class="controls-inline">
+        <div class="control-row" aria-label="Paradigm filters">
+          <span class="dim-label">Paradigm:</span>
+          <div id="paradigmChips"></div>
+        </div>
+        <div class="control-row" aria-label="Zoom control">
+          <span class="dim-label">Zoom:</span>
+          <input id="zoomSlider" type="range" min="1" max="2" step="0.01" value="1">
+          <span id="zoomValue">1.00x</span>
+        </div>
+      </div>
+      <div class="control-row dimension-row" aria-label="Score dimension toggle">
+        <span class="dim-label">Dimension:</span>
+        <div id="dimensionChips"></div>
+      </div>
+      <div id="vizChartWrap">
+        <svg id="scoreBubbleChart" viewBox="0 0 960 520" role="img" aria-label="Score vs release bubble chart"></svg>
+        <div id="bubbleTooltip" class="viz-tooltip" style="display:none;"></div>
+      </div>
+    </div>
 
     <script>
     (function enableStickyHeaderOffset(root = document) {
@@ -1554,6 +1815,12 @@
       });
     })();
 
+    (function removeRewriteArrows(root = document) {
+      root.querySelectorAll('tr.expandable[data-detail$="rewrite"] .arrow').forEach(el => {
+        el.remove();
+      });
+    })(document);
+
     (function (root = document) {
       function applyScoreAccents(target = root) {
         const table = target.getElementById('benchmarkTable');
@@ -1632,6 +1899,594 @@
       applyScoreAccents(root);
     })();
 
+    (function setupLeaderboardVisualization(root = document) {
+      const svg = root.getElementById('scoreBubbleChart');
+      const chipsHost = root.getElementById('dimensionChips');
+      const paradigmHost = root.getElementById('paradigmChips');
+      const tooltip = root.getElementById('bubbleTooltip');
+      const chartWrap = root.getElementById('vizChartWrap');
+      if (!svg || !chipsHost || !chartWrap || !paradigmHost) return;
+
+      const NS = 'http://www.w3.org/2000/svg';
+      const create = (tag, attrs = {}) => {
+        const el = document.createElementNS(NS, tag);
+        Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+        return el;
+      };
+
+      const dims = [
+        { key: 'Overall', column: 17, label: 'Overall' },
+        { key: 'Mean-Comp', column: 7, label: 'Composition' },
+        { key: 'Mean-Reason', column: 16, label: 'Reasoning' },
+        { key: 'MI', column: 3, label: 'MI' },
+        { key: 'MA', column: 4, label: 'MA' },
+        { key: 'MR', column: 5, label: 'MR' },
+        { key: 'TR', column: 6, label: 'TR' },
+        { key: 'LR', column: 8, label: 'LR' },
+        { key: 'BR', column: 9, label: 'BR' },
+        { key: 'HR', column: 10, label: 'HR' },
+        { key: 'PR', column: 11, label: 'PR' },
+        { key: 'GR', column: 12, label: 'GR' },
+        { key: 'AR', column: 13, label: 'AR' },
+        { key: 'CR', column: 14, label: 'CR' },
+        { key: 'RR', column: 15, label: 'RR' }
+      ];
+      const dimLabelMap = Object.fromEntries(dims.map(d => [d.key, d.label]));
+
+      const colorMap = {
+        'Diffusion Models': '#4338ca',
+        'Autoregressive Models': '#16a34a',
+        'Unified Models': '#0ea5e9',
+        'Closed-Source Models': '#ea580c'
+      };
+
+      let selectedDim = 'Overall';
+      let activeParadigms = new Set(Object.keys(colorMap));
+      let zoom = 1;
+      let pan = { x: 0, y: 0 };
+      const MIN_ZOOM = 1;
+      const MAX_ZOOM = 2;
+      let contentGroup = null;
+      let isPanning = false;
+      let lastPoint = null;
+      let activePointerId = null;
+      const zoomSlider = root.getElementById('zoomSlider');
+      const zoomValue = root.getElementById('zoomValue');
+      const MIN_PAN_FACTOR = 0;
+      let bubbleData = [];
+      let activeBubble = null;
+
+      function renderChips() {
+        chipsHost.innerHTML = '';
+        dims.forEach(dim => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'dim-chip';
+          btn.textContent = dim.label;
+          btn.dataset.key = dim.key;
+          if (selectedDim === dim.key) btn.classList.add('active');
+          btn.addEventListener('click', () => {
+            selectedDim = dim.key;
+            renderChips();
+            refresh();
+          });
+          chipsHost.appendChild(btn);
+        });
+      }
+
+      function renderParadigmChips() {
+        paradigmHost.innerHTML = '';
+        Object.keys(colorMap).forEach(group => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'paradigm-chip';
+          btn.textContent = group.replace(' Models', '');
+          btn.style.setProperty('--chip-color', colorMap[group]);
+          btn.dataset.group = group;
+          if (activeParadigms.has(group)) btn.classList.add('active');
+          btn.addEventListener('click', () => {
+            if (activeParadigms.has(group)) activeParadigms.delete(group);
+          else activeParadigms.add(group);
+          renderParadigmChips();
+          refresh();
+        });
+        paradigmHost.appendChild(btn);
+      });
+      }
+
+      function parseRelease(str) {
+        if (!str) return null;
+        const m = /^(\d{4})-(\d{2})$/.exec(str.trim());
+        if (!m) return null;
+        const year = parseInt(m[1], 10);
+        const month = parseInt(m[2], 10) - 1;
+        if (Number.isNaN(year) || month < 0 || month > 11) return null;
+        return new Date(year, month, 1);
+      }
+
+      function parseParams(str) {
+        if (!str || str === '-') return NaN;
+        const m = /([-+]?[0-9]*\.?[0-9]+)/.exec(str);
+        return m ? parseFloat(m[1]) : NaN;
+      }
+
+      function formatParams(val) {
+        if (!Number.isFinite(val)) return 'Unknown';
+        if (val >= 1000) return `${(val / 1000).toFixed(1)}T`;
+        return `${val.toFixed(val >= 10 ? 0 : 1)}B`;
+      }
+
+      function collectRows() {
+        const table = root.getElementById('benchmarkTable');
+        const body = table?.tBodies?.[0];
+        if (!body) return [];
+        return Array.from(body.querySelectorAll('tr.data-row')).map(row => {
+          const cells = row.cells;
+          const name = (row.querySelector('td.model')?.textContent || '').trim();
+          const release = (cells[1]?.textContent || '').trim();
+          const date = parseRelease(release);
+          if (!date) return null;
+          const params = parseParams(cells[2]?.textContent || '');
+          const scores = {};
+          dims.forEach(dim => {
+            const cell = cells[dim.column];
+            if (!cell) return;
+            const val = parseFloat(cell.textContent);
+            if (!Number.isNaN(val)) scores[dim.key] = val;
+          });
+          const group = row.dataset.group || 'Other';
+          if (colorMap[group] && !activeParadigms.has(group)) return null;
+          return { name, release, date, params, scores, group };
+        }).filter(Boolean);
+      }
+
+      function computeScore(entry) {
+        const v = entry.scores[selectedDim];
+        return Number.isFinite(v) ? v : NaN;
+      }
+
+      function effectivePan() {
+        const f = panFactor(zoom);
+        return { x: pan.x * f, y: pan.y * f };
+      }
+
+      function applyTransform() {
+        if (!contentGroup) return;
+        const { x: effX, y: effY } = effectivePan();
+        contentGroup.setAttribute('transform', `translate(${effX} ${effY}) scale(${zoom})`);
+        const rounded = Math.round(zoom * 100) / 100;
+        if (zoomSlider) zoomSlider.value = rounded.toFixed(2);
+        if (zoomValue) zoomValue.textContent = `${rounded.toFixed(2)}x`;
+      }
+
+      function jitterValue(key, salt = '') {
+        const str = `${key}-${salt}`;
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          hash = ((hash << 5) - hash) + str.charCodeAt(i);
+          hash |= 0;
+        }
+        const u = (hash >>> 0) % 10000;
+        return (u / 5000) - 1; // [-1, 1)
+      }
+
+      function toSvgPoint(evt) {
+        if (!svg) return { x: 0, y: 0 };
+        const rect = svg.getBoundingClientRect();
+        const vb = svg.viewBox.baseVal || { width: 1, height: 1 };
+        return {
+          x: (evt.clientX - rect.left) * (vb.width / rect.width),
+          y: (evt.clientY - rect.top) * (vb.height / rect.height)
+        };
+      }
+
+      function clampZoom(val) {
+        return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, val));
+      }
+
+      function panFactor(z) {
+        if (z <= 1) return MIN_PAN_FACTOR;
+        return Math.min(1, Math.max(MIN_PAN_FACTOR, (z - 1) / (MAX_ZOOM - 1)));
+      }
+
+      function quantizeZoom(val) {
+        return Math.round(val * 100) / 100;
+      }
+
+      function updateZoom(newZoom, anchor) {
+        const target = clampZoom(quantizeZoom(newZoom));
+        if (target === zoom) return;
+        const pt = anchor || (svg ? { x: svg.viewBox.baseVal.width / 2, y: svg.viewBox.baseVal.height / 2 } : { x: 0, y: 0 });
+        const fOld = panFactor(zoom);
+        const fNew = panFactor(target);
+        const effOldX = pan.x * fOld;
+        const effOldY = pan.y * fOld;
+        const effPreserveX = ((pt.x + effOldX) * (zoom / target)) - pt.x;
+        const effPreserveY = ((pt.y + effOldY) * (zoom / target)) - pt.y;
+        pan.x = effPreserveX;
+        pan.y = effPreserveY;
+        zoom = target;
+        applyTransform();
+      }
+
+      function resetView() {
+        zoom = 1;
+        pan = { x: 0, y: 0 };
+        applyTransform();
+      }
+
+      function buildMonthTicks(minDate, maxDate) {
+        const ticks = [];
+        const start = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+        const end = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+        const totalMonths = Math.max(1, (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()));
+        const step = totalMonths > 10 ? Math.ceil(totalMonths / 10) : 1;
+        for (let cursor = new Date(start); cursor <= end; cursor.setMonth(cursor.getMonth() + step)) {
+          ticks.push(new Date(cursor));
+          if (ticks.length > 24) break;
+        }
+        if (!ticks.length) ticks.push(start);
+        return ticks;
+      }
+
+      function draw(data) {
+        const width = 960;
+        const height = 520;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+        if (!data.length) {
+          const empty = create('text', {
+            x: width / 2,
+            y: height / 2,
+            'text-anchor': 'middle',
+            'font-size': 14,
+            'font-weight': 700,
+            fill: '#64748b'
+          });
+          empty.textContent = 'No data available';
+          svg.appendChild(empty);
+          if (tooltip) tooltip.style.display = 'none';
+          return;
+        }
+
+        const margin = { top: 40, right: 80, bottom: 40, left: 60 };
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+
+        const times = data.map(d => d.date.getTime());
+        const scores = data.map(d => d.score);
+        const params = data.map(d => d.params).filter(Number.isFinite);
+
+        const xMin = Math.min(...times);
+        const xMax = Math.max(...times);
+        const padMs = Math.max((xMax - xMin) * 0.06, 1000 * 60 * 60 * 24 * 20);
+        const xMinPad = xMin - padMs;
+        const xMaxPad = xMax + padMs * 0.3;
+        const yMin = Math.min(0, Math.floor(Math.min(...scores) / 10) * 10);
+        const yMax = Math.max(60, Math.ceil(Math.max(...scores) / 10) * 10);
+
+        const scaleX = (val) => {
+          if (xMaxPad === xMinPad) return margin.left + innerW / 2;
+          return margin.left + ((val - xMinPad) / (xMaxPad - xMinPad)) * innerW;
+        };
+        const scaleY = (val) => {
+          if (yMax === yMin) return margin.top + innerH / 2;
+          return margin.top + innerH - ((val - yMin) / (yMax - yMin || 1)) * innerH;
+        };
+
+        const safeParams = params.map(v => Math.max(v, 0));
+        const logParams = safeParams.map(v => Math.log10(v + 1));
+        const logMin = logParams.length ? Math.min(...logParams) : 0;
+        const logMax = logParams.length ? Math.max(...logParams) : 0;
+        const radius = (val) => {
+          if (!Number.isFinite(val)) return 10;
+          if (logMax === logMin) return 18;
+          const lv = Math.log10(Math.max(val, 0) + 1);
+          const t = Math.pow((lv - logMin) / (logMax - logMin || 1), 0.85);
+          return 8 + t * 26;
+        };
+
+        const grid = create('g', { stroke: '#e2e8f0', 'stroke-width': 1, fill: 'none' });
+        const yStep = yMax - yMin > 60 ? 20 : 10;
+        for (let v = yMin; v <= yMax + 0.001; v += yStep) {
+          const y = scaleY(v);
+          grid.appendChild(create('line', { x1: margin.left, x2: margin.left + innerW, y1: y, y2: y, 'stroke-dasharray': '3 3' }));
+          const label = create('text', {
+            x: margin.left - 10,
+            y: y + 4,
+            'text-anchor': 'end',
+            'font-size': 12,
+            'font-weight': 800,
+            fill: '#000000',
+            stroke: '#000000',
+            'stroke-width': 0.25,
+            'paint-order': 'stroke fill'
+          });
+          label.textContent = v.toFixed(0);
+          grid.appendChild(label);
+        }
+
+        const xTicks = buildMonthTicks(new Date(xMin), new Date(xMax));
+        xTicks.forEach((tick) => {
+          const x = scaleX(tick.getTime());
+          grid.appendChild(create('line', { x1: x, x2: x, y1: margin.top, y2: margin.top + innerH, 'stroke-dasharray': '3 3', stroke: '#e5e7eb' }));
+          const label = create('text', {
+            x,
+            y: margin.top + innerH + 18,
+            'text-anchor': 'middle',
+            'font-size': 12,
+            'font-weight': 800,
+            fill: '#000000',
+            stroke: '#000000',
+            'stroke-width': 0.25,
+            'paint-order': 'stroke fill'
+          });
+          label.textContent = `${tick.getFullYear()}-${String(tick.getMonth() + 1).padStart(2, '0')}`;
+          grid.appendChild(label);
+        });
+
+        svg.appendChild(grid);
+        const axisStyle = { stroke: '#0f172a', 'stroke-width': 2, 'stroke-linecap': 'round' };
+        svg.appendChild(create('line', { x1: margin.left, x2: margin.left + innerW, y1: margin.top + innerH, y2: margin.top + innerH, ...axisStyle }));
+        svg.appendChild(create('line', { x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top + innerH, ...axisStyle }));
+
+        const xArrow = create('path', {
+          d: `M ${margin.left + innerW} ${margin.top + innerH} l 14 0 l -8 -5 m8 5 l -8 5`,
+          fill: 'none',
+          stroke: '#0f172a',
+          'stroke-width': 2,
+          'stroke-linecap': 'round',
+          'stroke-linejoin': 'round'
+        });
+        const xLabel = create('text', {
+          x: margin.left + innerW - 40,
+          y: margin.top + innerH - 15,
+          'text-anchor': 'start',
+          'font-size': 16,
+          'font-weight': 800,
+          fill: '#0f172a',
+          stroke: '#0f172a',
+          'stroke-width': 0.35,
+          'paint-order': 'stroke fill'
+        });
+        xLabel.textContent = 'Release Date';
+        const yArrow = create('path', {
+          d: `M ${margin.left} ${margin.top} l 0 -14 l -5 8 m5 -8 l 5 8`,
+          fill: 'none',
+          stroke: '#0f172a',
+          'stroke-width': 2,
+          'stroke-linecap': 'round',
+          'stroke-linejoin': 'round'
+        });
+        const yLabel = create('text', {
+          x: margin.left + 14,
+          y: margin.top - 6,
+          'text-anchor': 'start',
+          'font-size': 16,
+          'font-weight': 800,
+          fill: '#0f172a',
+          stroke: '#0f172a',
+          'stroke-width': 0.35,
+          'paint-order': 'stroke fill',
+          transform: ''
+        });
+        yLabel.textContent = `${dimLabelMap[selectedDim] || 'Score'} Score`;
+        svg.appendChild(xArrow);
+        svg.appendChild(xLabel);
+        svg.appendChild(yArrow);
+        svg.appendChild(yLabel);
+
+        const bubbles = create('g');
+        const jitterScaleX = Math.max(10, innerW * 0.015);
+        const jitterScaleY = 6;
+        const currentBubbles = [];
+        data.forEach(item => {
+          const baseX = scaleX(item.date.getTime());
+          const baseY = scaleY(item.score);
+          const jx = jitterValue(item.name, 'x') * jitterScaleX;
+          const jy = jitterValue(item.name, 'y') * jitterScaleY;
+          const x = Math.min(margin.left + innerW, Math.max(margin.left, baseX + jx));
+          const y = Math.min(margin.top + innerH, Math.max(margin.top, baseY + jy));
+          const r = radius(item.params);
+          const color = colorMap[item.group] || '#0ea5e9';
+          const bubbleGroup = create('g', { class: 'bubble-item' });
+          const circle = create('circle', {
+            cx: x,
+            cy: y,
+            r,
+            fill: color,
+            'fill-opacity': 0.1,
+            stroke: color,
+            'stroke-width': 2,
+            'pointer-events': 'none'
+          });
+          const label = create('text', {
+            x,
+            y: y - r - 4,
+            'text-anchor': 'middle',
+            'font-size': 10,
+            'font-weight': 700,
+            fill: '#0f172a',
+            'pointer-events': 'none'
+          });
+          label.textContent = item.name;
+          bubbleGroup.appendChild(circle);
+          bubbleGroup.appendChild(label);
+
+          bubbleGroup.setAttribute('pointer-events', 'none');
+
+          currentBubbles.push({ x, y, r, item, group: bubbleGroup });
+
+          bubbles.appendChild(bubbleGroup);
+        });
+
+        bubbleData = currentBubbles;
+
+        const contentGroupEl = create('g', { transform: `translate(${pan.x} ${pan.y}) scale(${zoom})` });
+        const staticGroup = create('g');
+        while (svg.firstChild) {
+          staticGroup.appendChild(svg.firstChild);
+        }
+        svg.appendChild(contentGroupEl);
+        contentGroupEl.appendChild(staticGroup);
+        contentGroupEl.appendChild(bubbles);
+        contentGroup = contentGroupEl;
+        applyTransform();
+      }
+
+      function handleWheel(evt) {
+        if (!svg) return;
+        evt.preventDefault();
+        const isPinch = evt.ctrlKey || Math.abs(evt.deltaZ || 0) > 0;
+        if (isPinch) { // pinch gesture => zoom (responsive with gentle floor)
+          evt.preventDefault();
+          const raw = -evt.deltaY * 0.012;
+          let delta = Math.max(-0.08, Math.min(0.08, raw));
+          if (delta === 0) return;
+          const minStep = 0.01;
+          if (Math.abs(delta) < minStep) delta = Math.sign(delta) * minStep;
+          const factor = Math.exp(delta);
+          const pt = toSvgPoint(evt);
+          updateZoom(zoom * factor, pt);
+        } else { // two-finger scroll => pan when zoomed in; otherwise let page scroll
+          if (zoom <= MIN_ZOOM + 1e-4) return;
+          evt.preventDefault();
+          const scale = 1 / Math.max(zoom, 0.001);
+          const k = 3.0; // speed multiplier for snappier panning
+          pan.x -= evt.deltaX * scale * k;
+          pan.y -= evt.deltaY * scale * k;
+          applyTransform();
+        }
+      }
+
+      function handlePointerDown(evt) {
+        if (evt.button !== undefined && evt.button !== 0 && evt.pointerType === 'mouse') return;
+        isPanning = true;
+        lastPoint = toSvgPoint(evt);
+        activePointerId = evt.pointerId;
+        svg.classList.add('dragging');
+        if (svg.setPointerCapture && evt.pointerId !== undefined) {
+          try { svg.setPointerCapture(evt.pointerId); } catch (_) {}
+        }
+      }
+
+      function handlePointerMove(evt) {
+        if (!isPanning || !lastPoint) return;
+        const pt = toSvgPoint(evt);
+        const speed = 3.5; // mouse drag speed multiplier for snappier feel
+        const dx = ((pt.x - lastPoint.x) / zoom) * speed;
+        const dy = ((pt.y - lastPoint.y) / zoom) * speed;
+        pan.x += dx;
+        pan.y += dy;
+        lastPoint = pt;
+        applyTransform();
+      }
+
+      function handleBubbleHover(evt) {
+        if (isPanning) return;
+        const ptRaw = toSvgPoint(evt);
+        const { x: effX, y: effY } = effectivePan();
+        const px = (ptRaw.x - effX) / zoom;
+        const py = (ptRaw.y - effY) / zoom;
+        const padding = 10;
+        const candidates = [];
+        bubbleData.forEach(entry => {
+          const dx = px - entry.x;
+          const dy = py - entry.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist <= entry.r + padding) {
+            candidates.push({ entry, dist });
+          }
+        });
+        if (!candidates.length) {
+          hideTooltip();
+          return;
+        }
+        candidates.sort((a, b) => {
+          if (a.entry.r !== b.entry.r) return a.entry.r - b.entry.r; // smaller bubble first
+          return a.dist - b.dist;
+        });
+        const best = candidates[0].entry;
+        if (activeBubble !== best) {
+          activeBubble = best;
+          if (best.group?.parentNode) best.group.parentNode.appendChild(best.group);
+        }
+        showTooltip(best.item, evt);
+      }
+
+      function endPan(evt) {
+        if (!isPanning) return;
+        isPanning = false;
+        lastPoint = null;
+        svg.classList.remove('dragging');
+        if (svg.releasePointerCapture && activePointerId !== null) {
+          try { svg.releasePointerCapture(activePointerId); } catch (_) {}
+        }
+        activePointerId = null;
+      }
+
+      function showTooltip(item, evt) {
+        if (!tooltip) return;
+        const rect = chartWrap.getBoundingClientRect();
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${evt.clientX - rect.left}px`;
+        tooltip.style.top = `${evt.clientY - rect.top}px`;
+        const dimLabel = dimLabelMap[selectedDim] || selectedDim;
+        const tint = colorMap[item.group] || '#0ea5e9';
+        tooltip.style.borderColor = tint;
+        tooltip.style.boxShadow = `0 10px 24px ${tint}55`;
+        tooltip.innerHTML = `
+          <span class="tt-name" style="color:${tint};">${item.name}</span>
+          <span class="tt-row">Release: ${item.release}</span>
+          <span class="tt-row">${dimLabel}: ${item.score.toFixed(1)}</span>
+          <span class="tt-row">#Params: ${formatParams(item.params)}</span>
+        `;
+      }
+
+      function hideTooltip() {
+        if (tooltip) tooltip.style.display = 'none';
+        activeBubble = null;
+      }
+
+      function refresh() {
+        const entries = collectRows();
+        const enriched = entries
+          .map(entry => {
+            const score = computeScore(entry);
+            return Number.isFinite(score) ? { ...entry, score } : null;
+          })
+          .filter(Boolean);
+        draw(enriched);
+      }
+
+      if (zoomSlider) {
+        zoomSlider.addEventListener('input', (evt) => {
+          const target = parseFloat(evt.target.value);
+          if (!Number.isNaN(target)) updateZoom(target, null);
+        });
+      }
+      if (zoomValue) {
+        zoomValue.addEventListener('dblclick', resetView);
+      }
+      if (svg) {
+        svg.addEventListener('wheel', handleWheel, { passive: false });
+        svg.addEventListener('pointerdown', handlePointerDown);
+        svg.addEventListener('pointermove', handlePointerMove);
+        svg.addEventListener('pointerup', endPan);
+        svg.addEventListener('pointercancel', endPan);
+        svg.addEventListener('pointerleave', endPan);
+        svg.addEventListener('dblclick', evt => { evt.preventDefault(); resetView(); });
+        svg.addEventListener('pointermove', handleBubbleHover);
+        svg.addEventListener('pointerleave', hideTooltip);
+      }
+
+      renderChips();
+      renderParadigmChips();
+      refresh();
+      root.refreshLeaderboardVisualization = refresh;
+    })(document);
+
     (function setupEvaluatorSwitch(root = document) {
       const tableBody = root.getElementById('tableBody');
       const buttons = Array.from(root.querySelectorAll('.evaluator-btn[data-evaluator]'));
@@ -1662,35 +2517,37 @@
         if (typeof root.ensureParamsColumn === 'function') root.ensureParamsColumn(root);
         if (typeof root.forceAllExpandable === 'function') root.forceAllExpandable(true);
         if (typeof root.applyScoreAccents === 'function') root.applyScoreAccents(root);
+        if (typeof root.refreshLeaderboardVisualization === 'function') root.refreshLeaderboardVisualization();
         if (typeof root.updateStickyHeaderOffset === 'function') root.updateStickyHeaderOffset();
       }
 
-      function setActive(button) {
+      function setActive(key) {
+        if (!key) return;
         buttons.forEach(btn => {
-          const active = btn === button;
+          const active = btn.dataset.evaluator === key;
           btn.classList.toggle('active', active);
           btn.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
-        refreshEvaluator(button.dataset.evaluator);
-        if (caption) caption.textContent = button.textContent.trim();
-        if (rewriteCaption) {
-          const showRewriteNote = button.dataset.rewrite === 'true';
+        refreshEvaluator(key);
+        const refBtn = buttons.find(btn => btn.dataset.evaluator === key) || null;
+        if (caption && refBtn) caption.textContent = refBtn.textContent.trim();
+        if (rewriteCaption && refBtn) {
+          const showRewriteNote = refBtn.dataset.rewrite === 'true';
           rewriteCaption.style.display = showRewriteNote ? '' : 'none';
         }
       }
 
       buttons.forEach(btn => {
-        btn.addEventListener('click', () => setActive(btn));
+        btn.addEventListener('click', () => setActive(btn.dataset.evaluator));
       });
 
-      setActive(buttons[0]);
+      setActive(buttons[0].dataset.evaluator);
     })();
     </script>
 
-    </figure>
   </div>
 </section>
-<!-- End Leaderboard -->
+<!-- End Leaderboard Visualization -->
 
 
 <!--BibTex citation -->
