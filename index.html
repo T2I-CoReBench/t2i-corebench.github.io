@@ -1064,6 +1064,15 @@
         font-weight: 700;
         line-height: 1.35;
       }
+      .viz-footnote {
+        margin-top: 18px;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+      }
+      .viz-footnote strong {
+        color: #0f172a;
+      }
       .viz-empty {
         text-align: center;
         color: #475569;
@@ -1450,6 +1459,9 @@
         <svg id="scoreBubbleChart" viewBox="0 0 960 520" role="img" aria-label="Score vs release bubble chart"></svg>
         <div id="bubbleTooltip" class="viz-tooltip" style="display:none;"></div>
       </div>
+      <p class="viz-footnote">
+        <strong>Note:</strong> Circle size corresponds to parameter scale for open-source models, while closed-source models are shown as dashed circles due to unknown parameter scales.
+      </p>
     </div>
 
     <script>
@@ -2016,6 +2028,10 @@
         if (val >= 1000) return `${(val / 1000).toFixed(1)}T`;
         return `${val.toFixed(val >= 10 ? 0 : 1)}B`;
       }
+      function formatParamsDisplay(entry) {
+        if (Number.isFinite(entry.params)) return formatParams(entry.params);
+        return 'Unknown';
+      }
 
       function collectRows() {
         const table = root.getElementById('benchmarkTable');
@@ -2290,22 +2306,39 @@
           const jy = jitterValue(item.name, 'y') * jitterScaleY;
           const x = Math.min(margin.left + innerW, Math.max(margin.left, baseX + jx));
           const y = Math.min(margin.top + innerH, Math.max(margin.top, baseY + jy));
-          const r = radius(item.params);
+          const paramsKnown = Number.isFinite(item.params);
+          const r = paramsKnown ? radius(item.params) : 12;
           const color = colorMap[item.group] || '#0ea5e9';
           const bubbleGroup = create('g', { class: 'bubble-item' });
-          const circle = create('circle', {
-            cx: x,
-            cy: y,
-            r,
-            fill: color,
-            'fill-opacity': 0.1,
-            stroke: color,
-            'stroke-width': 2,
-            'pointer-events': 'none'
-          });
+          if (paramsKnown) {
+            const circle = create('circle', {
+              cx: x,
+              cy: y,
+              r,
+              fill: color,
+              'fill-opacity': 0.1,
+              stroke: color,
+              'stroke-width': 2,
+              'pointer-events': 'none'
+            });
+            bubbleGroup.appendChild(circle);
+          } else {
+            const dashedCircle = create('circle', {
+              cx: x,
+              cy: y,
+              r,
+              fill: color,
+              'fill-opacity': 0.08,
+              stroke: color,
+              'stroke-width': 2.4,
+              'stroke-dasharray': '6 4',
+              'pointer-events': 'none'
+            });
+            bubbleGroup.appendChild(dashedCircle);
+          }
           const label = create('text', {
             x,
-            y: y - r - 4,
+            y: y - r - 6,
             'text-anchor': 'middle',
             'font-size': 10,
             'font-weight': 700,
@@ -2313,7 +2346,6 @@
             'pointer-events': 'none'
           });
           label.textContent = item.name;
-          bubbleGroup.appendChild(circle);
           bubbleGroup.appendChild(label);
 
           bubbleGroup.setAttribute('pointer-events', 'none');
@@ -2442,7 +2474,7 @@
           <span class="tt-name" style="color:${tint};">${item.name}</span>
           <span class="tt-row">Release: ${item.release}</span>
           <span class="tt-row">${dimLabel}: ${item.score.toFixed(1)}</span>
-          <span class="tt-row">#Params: ${formatParams(item.params)}</span>
+          <span class="tt-row">#Params: ${formatParamsDisplay(item)}</span>
         `;
       }
 
