@@ -949,7 +949,7 @@
       .controls-inline {
         display: flex;
         flex-wrap: wrap;
-        gap: 175px;
+        gap: 160px;
         align-items: center;
       }
       .dim-label {
@@ -1815,12 +1815,6 @@
       });
     })();
 
-    (function removeRewriteArrows(root = document) {
-      root.querySelectorAll('tr.expandable[data-detail$="rewrite"] .arrow').forEach(el => {
-        el.remove();
-      });
-    })(document);
-
     (function (root = document) {
       function applyScoreAccents(target = root) {
         const table = target.getElementById('benchmarkTable');
@@ -1934,7 +1928,7 @@
       const dimLabelMap = Object.fromEntries(dims.map(d => [d.key, d.label]));
 
       const colorMap = {
-        'Diffusion Models': '#4338ca',
+        'Diffusion Models': '#e11d48',
         'Autoregressive Models': '#16a34a',
         'Unified Models': '#0ea5e9',
         'Closed-Source Models': '#ea580c'
@@ -2010,6 +2004,13 @@
         return m ? parseFloat(m[1]) : NaN;
       }
 
+      function cleanModelName(raw = '') {
+        return raw
+          .replace(/^[▸▾]\s*/, '')        // 去掉前缀箭头
+          .replace(/\+ Prompt Rewriting/i, '')
+          .trim();
+      }
+
       function formatParams(val) {
         if (!Number.isFinite(val)) return 'Unknown';
         if (val >= 1000) return `${(val / 1000).toFixed(1)}T`;
@@ -2022,7 +2023,8 @@
         if (!body) return [];
         return Array.from(body.querySelectorAll('tr.data-row')).map(row => {
           const cells = row.cells;
-          const name = (row.querySelector('td.model')?.textContent || '').trim();
+          const rawName = (row.querySelector('td.model')?.textContent || '').trim();
+          const name = cleanModelName(rawName);
           const release = (cells[1]?.textContent || '').trim();
           const date = parseRelease(release);
           if (!date) return null;
